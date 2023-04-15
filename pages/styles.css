@@ -1,0 +1,183 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+body{
+    /* margin: 0px; */
+    /* padding: 0px; */
+    /* width: 100vw; */
+    /* box-sizing: border-box; */
+    /* background-color: black; */
+    overflow-x: hidden;
+}
+header{
+    position: relative;
+    left: 0px;
+    top: 0px;
+    width: 100vw;
+    height: 10vh;
+    background-color: #24252A;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5vw;
+    box-sizing: border-box;
+    justify-content: flex-end;
+}
+footer{
+    position: relative;
+    width: 100vw;
+    height: 10vh;
+    background-color: #24252A;
+    display: flex;
+    align-items: center;
+    padding: 0 2.5vw;
+    justify-content: center;
+}
+header .logo{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    /* cursor: pointer;  */
+    margin-right: auto;
+}
+li, a, button{
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    border: none;
+    outline: none;
+}
+.nav{
+    list-style: none;
+    white-space: nowrap;
+    overflow-x: auto;
+}
+
+.nav li{
+    display: inline-block;
+    padding: 0 1vw;
+}
+.nav li a{
+    transition: all 0.3s ease 0s;
+}
+.nav li a:hover{
+    color: #37a3fa; 
+}
+header button{
+    /* width: 6vw; */
+    cursor: pointer;
+    padding: 9px 25px;
+    background-color: #006ac0;
+    border-radius: 30px;
+    transition: all 0.3s ease 0s;
+    
+}
+header button:hover{
+    background-color: #37a3fa;
+}
+.formContainer {
+    width: 100vw;
+    background: #4FC3F7    ;
+    position: relative;
+    height: 90vh;
+    /* height: 1000px; */
+    /* height: 97vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* box-sizing: border-box; */
+}
+.formContainer .formWrapper {
+    background-color: white;
+    height: 550px;
+    padding: 20px 60px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    /* box-sizing: border-box; */
+}
+.formContainer .formWrapper .logo {
+    color: #5d5b8d;
+    font-weight: bold;
+    font-size: 30px;
+    /* width: 300px; */
+    /* text-align: center; */
+}
+
+.formContainer .formWrapper form {
+    position: relative;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.formContainer .formWrapper form input {
+    padding: 15px;
+    border: none;
+    width: 300px;
+    /* border-bottom: 1px solid #a7bcff; */
+    border-bottom: 1px solid #2196F3 ;
+}
+.formContainer .formWrapper form input::placeholder {
+  color: #afafaf;
+}
+.formContainer .formWrapper form .button, .formContainer .formWrapper form button {
+    background-color: #2196F3 ;
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+.formContainer .formWrapper form button{
+    width: 300px;
+}
+.formContainer .formWrapper form label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8da4f1;
+    font-size: 12px;
+    cursor: pointer;
+}
+#error1, #error2{
+    display: none;
+    color: red;
+    position: relative;
+    top: -15px;
+    height: 0px;
+}
+@media (max-width:650px) {
+    header .logo{
+        display: none;
+    }
+    header{
+        /* background-color: red; */
+        justify-content: space-between;
+    }
+    header .nav {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+      }
+      header .nav li {
+        display: inline-block;
+        margin: 0;
+        padding: 0 2vw;
+      }
+    header .nav::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+}
