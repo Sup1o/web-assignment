@@ -3,7 +3,7 @@
     if (!isset($_SESSION['login']) || isset($_SESSION['login_error'])){
         if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register")
             header("Location: ./index.php?page=login");
-    }
+    }  
 
     
     if(isset($_GET['page'])){
@@ -14,7 +14,6 @@
             else
                 include "./pages/home1.php";
         else if ($page == 'register')
-            // echo 1;
             include "./pages/register.php";
         else if ($page == 'logout')
             include "./pages/logout.php";

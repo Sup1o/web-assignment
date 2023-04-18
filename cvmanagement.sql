@@ -1,59 +1,74 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Apr 15, 2023 at 04:52 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+CREATE DATABASE IF NOT EXISTS CVManagement;
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+USE CVManagement;
+
+CREATE TABLE IF NOT EXISTS EMPLOYER (
+  id VARCHAR(6) PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  phonenumber VARCHAR(20) NOT NULL,
+  company_name VARCHAR(50) NOT NULL,
+  tax_number VARCHAR(20) NOT NULL,
+  location VARCHAR(100) NOT NULL,
+  address VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS JOBS (
+  id VARCHAR(10) PRIMARY KEY,
+  employer_id VARCHAR(6),
+  name VARCHAR(50) NOT NULL,
+  salary DECIMAL(10, 2) NOT NULL,
+  description TEXT NOT NULL,
+  FOREIGN KEY (employer_id) REFERENCES employer(id)
+);
+
+CREATE TABLE IF NOT EXISTS JOB_REQUIRED_SKILLS (
+  job_id VARCHAR(10),
+  skill_name VARCHAR(20),
+  PRIMARY KEY (job_id, skill_name),
+  FOREIGN KEY (job_id) REFERENCES JOBS(id)
+);
+
+CREATE TABLE IF NOT EXISTS EMPLOYEE (
+  id VARCHAR(6) PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  phonenumber VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS CV (
+  id VARCHAR(10),
+  employee_id VARCHAR(6),
+  position VARCHAR(20) NOT NULL,
+  additional_information TEXT,
+  PRIMARY KEY (id, employee_id),
+  FOREIGN KEY (employee_id) REFERENCES EMPLOYEE(id)
+);
+
+CREATE TABLE IF NOT EXISTS CV_DEGREES (
+  CV_id VARCHAR(10),
+  degree_name VARCHAR(20),
+  PRIMARY KEY (CV_id, degree_name),
+  FOREIGN KEY (CV_id) REFERENCES CV(id)
+); 
+
+CREATE TABLE IF NOT EXISTS CV_CERTIFICATES (
+  CV_id VARCHAR(10),
+  certificate_name VARCHAR(20),
+  PRIMARY KEY (CV_id, certificate_name),
+  FOREIGN KEY (CV_id) REFERENCES CV(id)
+); 
+
+CREATE TABLE IF NOT EXISTS CV_EXPERIENCE (
+  CV_id VARCHAR(10),
+  experience_id VARCHAR(10),
+  description TEXT,
+  PRIMARY KEY (CV_id, experience_id),
+  FOREIGN KEY (CV_id) REFERENCES CV(id)
+); 
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `cvmanagement`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE `users` (
-  `Id` varchar(6) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL,
-  `UserType` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`Id`, `Username`, `Email`, `Password`, `UserType`) VALUES
-('123455', 'Pananasonics Co', 'Panana@email.com', '$2y$10$7n4fsf.SxafgEgrBssLMEeFf3p0..yRZSomEs9RlSu6itoeJy1o8y', 1),
-('123456', 'Nguyen Van A', 'User0@email.com', '$2y$10$CDuYez2WcLtC4eyBKbH2NeToslQFGxnwdtzPLAni7983bTSKTuITu', 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`Id`,`Email`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE USER IF NOT EXISTS 'kiet'@'localhost' IDENTIFIED BY '123';
+GRANT ALL PRIVILEGES ON *.* TO 'kiet'@'localhost' WITH GRANT OPTION;

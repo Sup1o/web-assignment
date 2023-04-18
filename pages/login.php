@@ -45,6 +45,8 @@
 
                 <button id = 'choose2'>Login as Employees</button>
 
+                <button id = 'choose2'>Login as Guests</button>
+
                 <div class="line"> </div>
                 <button type = "button" id = "a" style="position: relative; bottom: -50px;" >Register</button>
             </form>

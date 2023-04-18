@@ -87,7 +87,8 @@ header button:hover{
 }
 .formContainer {
     width: 100vw;
-    background: #4FC3F7    ;
+    background: linear-gradient(to bottom, #4FC3F7 70%, #000000 100%);
+    /* background: #4FC3F7    ; */
     position: relative;
     height: 90vh;
     /* height: 1000px; */
@@ -106,6 +107,7 @@ header button:hover{
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    /* box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.2); */
     /* box-sizing: border-box; */
 }
 .formContainer .formWrapper .logo {
