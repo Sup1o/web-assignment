@@ -23,11 +23,34 @@
     <button onclick="myFunction()">Log out</button>
 </header>
 <body>
-    home page for Employee!
+    <div class="job_page" >
+            <div class="search">
+                <input type="text" id="SearchInput" placeholder="search for companies or job positions">
+            </div>
+            
+            <div class="table" id="TableBody">
+
+            </div>
+    </div>
 </body>
+<footer>
+    
+</footer>
 <script>
     function myFunction() {
         window.location.href = "../index.php?page=logout";
     }
+    const TableBody = document.getElementById("TableBody");
+    function LoadTable(){
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) {
+                TableBody.innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "./pages/get_jobs.php");
+        xhttp.send();
+    }
+    LoadTable()
 </script>
 </html>

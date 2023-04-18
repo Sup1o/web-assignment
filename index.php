@@ -18,6 +18,8 @@
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
                 include "./pages/home0.php";
+            else if ($page == 'find_jobs')
+                include "./pages/find_jobs0.php";
             else
                 include "./pages/home0.php";
         }

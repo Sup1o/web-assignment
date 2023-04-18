@@ -26,6 +26,11 @@
             padding: 0 12%;
             color: red;
         }
+        @media screen and (max-width:650px) {
+            body{
+                overflow-x: hidden;
+            }
+        }
     </style>
 </head>
 <header>

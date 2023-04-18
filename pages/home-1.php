@@ -11,7 +11,7 @@
     <div class = "logo">CV MANAGEMENT</div>
     <ul class = "nav">
         <li>
-            <a href="#">Home</a>
+            <a href="./index.php?page=home">Home</a>
         </li>
         <li>
             <a href = "#">Find Jobs</a>
