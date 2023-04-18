@@ -69,11 +69,11 @@ CREATE TABLE IF NOT EXISTS CV_EXPERIENCE (
   FOREIGN KEY (CV_id) REFERENCES CV(id)
 ); 
 
--- INSERT INTO EMPLOYER (id, name, email, password, phonenumber, company_name, tax_number, location, address)
--- VALUES ('E00001', 'Nguyen Van A', 'Pananasonic@example.com', '$2y$10$7n4fsf.SxafgEgrBssLMEeFf3p0..yRZSomEs9RlSu6itoeJy1o8y', '123-456-7890', 'Pananasonics Corp', '1234567890', 'Ha Noi', '123 Hang Buom St');
+INSERT INTO EMPLOYER (id, name, email, password, phonenumber, company_name, tax_number, location, address)
+VALUES ('E00001', 'Nguyen Van A', 'Pananasonic@example.com', '$2y$10$7n4fsf.SxafgEgrBssLMEeFf3p0..yRZSomEs9RlSu6itoeJy1o8y', '123-456-7890', 'Pananasonics Corp', '1234567890', 'Ha Noi', '123 Hang Buom St');
 
--- INSERT INTO EMPLOYEE (id, name, email, password, phonenumber)
--- VALUES ('E00002', 'Tran Van B', 'VanB@example.com', '$2y$10$CDuYez2WcLtC4eyBKbH2NeToslQFGxnwdtzPLAni7983bTSKTuITu', '123-456-7891');
+INSERT INTO EMPLOYEE (id, name, email, password, phonenumber)
+VALUES ('E00002', 'Tran Van B', 'VanB@example.com', '$2y$10$CDuYez2WcLtC4eyBKbH2NeToslQFGxnwdtzPLAni7983bTSKTuITu', '123-456-7891');
 
 -- Insert data into JOBS table
 INSERT INTO JOBS (id, employer_id, name, salary, description)
