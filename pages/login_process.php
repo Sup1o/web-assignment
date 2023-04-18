@@ -11,22 +11,29 @@
     $typ = $_POST['login'];
     $username = mysqli_real_escape_string($conn, $email);
     $password = mysqli_real_escape_string($conn, $password);
-    $sql = "SELECT * FROM users WHERE Email = '$username'";
-    $check = mysqli_query($conn, $sql);
-    // echo mysqli_fetch_assoc($check)['Password'];
-    // echo password_hash($password, PASSWORD_DEFAULT);
+
     if ($typ === "Employer"){
         $typ = 1;
+        $sql = "SELECT * FROM employer WHERE email = '$username'";
+    }
+    else if ($typ === "Employee"){
+        $typ = 0;
+        $sql = "SELECT * FROM employee WHERE email = '$username'";
     }
     else{
-        $typ = 0;
+        $_SESSION['login'] = -1;
+        header("Location: ../index.php?page=home");
+        exit();
     }
-    $row = mysqli_fetch_assoc($check);
+
+
     
-    if (mysqli_num_rows($check) != 0 && password_verify($password,$row['Password']) && $row['UserType'] == $typ){
+    $check = mysqli_query($conn, $sql);
+    
+    $row = mysqli_fetch_assoc($check);
+    if (mysqli_num_rows($check) != 0 && password_verify($password,$row['password'])){
         unset($_SESSION['login_error']);
         $_SESSION['login'] = $typ;
-        echo 1;
         // session_write_close();
         header("Location: ../index.php?page=home");
         exit();

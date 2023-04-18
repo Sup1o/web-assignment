@@ -45,7 +45,7 @@
 
                 <button id = 'choose2'>Login as Employees</button>
 
-                <button id = 'choose2'>Login as Guests</button>
+                <button id = 'choose3'>Login as Guests</button>
 
                 <div class="line"> </div>
                 <button type = "button" id = "a" style="position: relative; bottom: -50px;" >Register</button>
@@ -55,7 +55,7 @@
         <div class="formWrapper" id="input">
             <span class="logo">CV MANAGEMENT</span>
             
-            <form action="./pages/login_process.php" method="POST">
+            <form action="./index.php?page=login_process" method="POST">
                 <input type="email" placeholder="Email" id = "username" name = "email">
                 <div id="error1">error message</div>
                 <input type="password" placeholder="Password" id = "password" name = "password">
@@ -105,6 +105,13 @@
             logintable.style.display = 'block';
             logintype.value = 'Employee';
         })
+
+        document.getElementById("choose3").addEventListener("click", e=>{
+            e.preventDefault(); 
+            logintype.value = 'Guest';
+            form.submit()
+        }
+        )
         form.addEventListener('submit', e => {
         	e.preventDefault(); 
             UsernameValue = username.value.trim();

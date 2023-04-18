@@ -16,16 +16,12 @@
         <li>
             <a href = "#">Find Jobs</a>
         </li>
-        <li>
-            <a href="#">Create CV</a>
-        </li>
-        
         
     </ul>
-    <button onclick="myFunction()">Log out</button>
+    <button onclick="myFunction()">Log in</button>
 </header>
 <body>
-    home page for Employee!
+    home page for Guests!
 </body>
 <script>
     function myFunction() {
