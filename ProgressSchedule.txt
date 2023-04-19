@@ -12,8 +12,8 @@ Thinh:
 Hieu:
 - jobs and company profile site  (redirect from the find_page in home0 and home-1)
 Hoang:
-- register site 
-- register_process site
++ register site 
++ register_process site
 
 
 TODO:
