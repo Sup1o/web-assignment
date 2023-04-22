@@ -83,7 +83,7 @@ header button:hover{
 /* css for the body */
 .formContainer {
     width: 100vw;
-    background: linear-gradient(to bottom, #4FC3F7 70%, #000000 100%);
+    background: #4FC3F7;
     position: relative;
     height: 90vh;
     height: 90dvh;
@@ -136,6 +136,10 @@ header button:hover{
     font-weight: bold;
     border: none;
     cursor: pointer;
+    border-radius: 5px;
+}
+.formContainer .formWrapper form .button:hover, .formContainer .formWrapper form button:hover {
+    background-color: #1976D2 ;
 }
 .formContainer .formWrapper form button{
     width: 300px;
@@ -155,7 +159,13 @@ header button:hover{
     top: -15px;
     height: 0px;
 }
-
+#error3, #error4, #error5, #error6, #error7, #error8{
+    display: none;
+    color: red;
+    position: relative;
+    top: -15px;
+    height: 0px;
+}
 /* this is the css for the find jobs page  */
 
 .job_page {
@@ -223,34 +233,7 @@ header button:hover{
     font-size: 200%;
     margin-bottom: 1vh;
 }
-@media (max-width:650px) {
-    header .logo{
-        display: none;
-    }
-    header{
-        /* background-color: red; */
-        justify-content: space-between;
-    }
-    header .nav {
-        display: inline-block;
-        margin: 0;
-        padding: 0;
-      }
-      header .nav li {
-        display: inline-block;
-        margin: 0;
-        padding: 0 2vw;
-      }
-    header .nav::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, and Opera */
-    }
-    .job_page .search, .job_page .table{
-        width: 85%;
-    }
-    .job_page .table .table_element{
-        padding: 0 5%;
-    }
-}
+
 /*Register Form CSS*/
 .form-container{
     min-height: 100vh;
@@ -302,7 +285,7 @@ header button:hover{
 }
 
 .form-container form .form-btn:hover{
-    background:goldenrod;
+    background:#1976D2;
     color: #eee;
 }
 .form-container form p{
@@ -326,4 +309,38 @@ header button:hover{
     border-radius: 5px;
     font-size: 20px;
     padding: 10px;
+}
+
+
+@media (max-width:650px) {
+    header .logo{
+        display: none;
+    }
+    header{
+        /* background-color: red; */
+        justify-content: space-between;
+    }
+    header .nav {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+      }
+      header .nav li {
+        display: inline-block;
+        margin: 0;
+        padding: 0 2vw;
+      }
+    header .nav::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+    .job_page .search, .job_page .table{
+        width: 85%;
+    }
+    .job_page .table .table_element{
+        padding: 0 5%;
+    }
+    .form-container form input,
+    .form-container form select{
+        font-size: 15px;
+    }
 }

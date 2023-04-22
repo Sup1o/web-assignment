@@ -9,6 +9,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="./pages/styles.css">
 </head>
+<header>
+    <div class = "logo">CV MANAGEMENT</div>
+</header>
 <body>
     <div class = "form-container" id ="form">
         <form action="./pages/register_processing.php" method ="POST">
@@ -43,10 +46,10 @@
             </select>
 
             <div class ="Company" id = "Company" style="display:none">
-                <input type ="companyname" name="companyname" id ="companyname" placeholder ="Enter your company's name">
+                <input type ="companyname" name="companyname" id ="companyname" placeholder ="Enter company's name">
                 <div id ="error6"> error message </div>
 
-                <input type="TAXID" id ="TAXID" placeholder ="Enter your company's TAX">
+                <input type="TAXID" id ="TAXID" placeholder ="Enter company's TAX number">
                 <div id = "error7"> error message</div>
                 
                 <input type="text" id="province" name ="province"placeholder ="Select province" list="provinces">
@@ -117,7 +120,7 @@
                     <option value="Yên Bái">
                 </datalist>
 
-                <input type="address" id ="address" placeholder ="Enter your company's address">
+                <input type="address" id ="address" placeholder ="Enter company's address">
                 <div id = "error8"> error message</div>
             </div>
 
