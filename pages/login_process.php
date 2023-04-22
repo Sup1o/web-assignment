@@ -24,10 +24,7 @@
         $_SESSION['login'] = -1;
         header("Location: ../index.php?page=home");
         exit();
-    }
-
-
-    
+    }    
     $check = mysqli_query($conn, $sql);
     
     $row = mysqli_fetch_assoc($check);

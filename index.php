@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['login']) || isset($_SESSION['login_error'])){
-        if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register")
+        if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register" && $_GET['page'] !=="register_processing")
             header("Location: ./index.php?page=login");
     }  
 
@@ -15,6 +15,8 @@
             include "./pages/register.php";
         else if ($page == 'login_process')
             include "./pages/login_process.php";
+        else if ($page == 'register_processing')
+            include "./pages/register_processing.php";
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
                 include "./pages/home0.php";

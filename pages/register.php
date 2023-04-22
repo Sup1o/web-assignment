@@ -13,8 +13,8 @@
     <div class = "logo">CV MANAGEMENT</div>
 </header>
 <body>
-    <div class = "form-container" id ="form">
-        <form action="./pages/register_processing.php" method ="POST">
+    <div class = "form-container" id="input">
+        <form action="./index.php?page=register_processing" method ="POST">
             <h3>Register</h3>
             <?php
             // Print type of Error
@@ -119,38 +119,39 @@
                     <option value="Vĩnh Phúc">
                     <option value="Yên Bái">
                 </datalist>
-
+                <div id = "error9"> error message</div>
                 <input type="address" id ="address" placeholder ="Enter company's address">
                 <div id = "error8"> error message</div>
             </div>
 
-            <input type="submit" name="submit" value="Register Now" class ="form-btn">
+            <input type="submit" value="Register Now" class ="form-btn">
             <p> Already have an account? <a href="index.php">Login now</a></p>
         </form>
     </div>
     
     <script>
 
-    const form = document.querySelector('#form');
+    const form = document.querySelector('#input form');
     const username = document.getElementById('username');
     const email = document.getElementById('email');
     const phonenumber = document.getElementById('phonenumber');
     const password = document.getElementById('password');
     const password2 = document.getElementById('confirm_password');
     
-    const error1 = document.querySelector('#error1');
-    const error2 = document.querySelector('#error2');
-    const error3 = document.querySelector('#error3');
-    const error4 = document.querySelector('#error4');
-    const error5 = document.querySelector('#error5');
-    const error6 = document.querySelector('#error6');
-    const error7 = document.querySelector('#error7');
-    const error8 = document.querySelector('#error8');
-    
+    const error1 = document.getElementById('error1');
+    const error2 = document.getElementById('error2');
+    const error3 = document.getElementById('error3');
+    const error4 = document.getElementById('error4');
+    const error5 = document.getElementById('error5');
+    const error6 = document.getElementById('error6');
+    const error7 = document.getElementById('error7');
+    const error8 = document.getElementById('error8');
     var select = document.getElementById('user_type');
     const companyname = document.getElementById('companyname');
     const taxID = document.getElementById('TAXID');
     const address = document.getElementById('address');
+    const province = document.getElementById('province');
+    const provinceList = document.getElementById('provinces');
     /*function to process select option*/
     select.addEventListener("change",function(){
         var selectedOption = this.options[this.selectedIndex].value;
@@ -180,7 +181,6 @@
         companynamevalue = companyname.value.trim();
         taxIDvalue = taxID.value.trim();
         addressvalue = address.value.trim();
-
         if(namevalue ===''){
             error1.textContent = 'Please enter your name!';
             error1.style.display ='block';
@@ -203,7 +203,6 @@
             error2.style.display = 'none';
             email.style.border = '2px solid limegreen';
         }
-
         if(phonevalue ===''){
             error3.textContent = 'Please enter your phone number!';
             error3.style.display ='block';
@@ -212,21 +211,35 @@
             error3.style.display = 'none';
             phonenumber.style.border= '2px solid limegreen';
         }
-
-        if(passwordvalue ===''){
-            error4.textContent = 'Please enter your password!';
+        if (password.value === ''){
+            error4.textContent ='Please enter your password!';
             error4.style.display ='block';
-            password.style.border= '2px solid red';
-        }else if( passwordvalue.length < 8){
+            password.style.border = '2px solid red';
+            error4.style.color = 'red';
+        }
+        else if (passwordvalue.length < 8){
             error4.textContent ='Your password must have at least 8 characters!';
             error4.style.display ='block';
             password.style.border = '2px solid red';
+            error4.style.color = 'red';
         }
-        else{
-            error4.style.display = 'none';
+        else if (getPasswordStrength(passwordvalue) <= 4){
+            error4.textContent ='Your password is too weak!';
+            error4.style.display ='block';
+            error4.style.color = 'red';
+        }
+        else if (getPasswordStrength(passwordvalue) <= 6){
+            error4.textContent ='Your password is decent!';
+            error4.style.display ='block';
+            error4.style.color = 'goldenrod';
             password.style.border = '2px solid limegreen';
         }
-
+        else{
+            error4.textContent ='Your password is strong!';
+            error4.style.display ='block';
+            error4.style.color = 'limegreen';
+            password.style.border = '2px solid limegreen';
+        }
         if(cfirmvalue != passwordvalue || passwordvalue ===''){
             error5.textContent = 'Password not matched';
             error5.style.display ='block';
@@ -235,43 +248,137 @@
             error5.style.display = 'none';
             password2.style.border = '2px solid limegreen';
         }
+        
 
         if(companynamevalue ===''){
             error6.textContent = 'Please enter your company name !';
             error6.style.display ='block';
-            username.style.border = '2px solid red';
+            companyname.style.border = '2px solid red';
         }else{
             error6.style.display = 'none';
-            username.style.border = '2px solid limegreen';
+            companyname.style.border = '2px solid limegreen';
         }
 
         if(taxIDvalue ===''){
             error7.textContent = 'Please enter your company TAX number!';
             error7.style.display ='block';
-            username.style.border = '2px solid red';
+            taxID.style.border = '2px solid red';
         }else{
             error7.style.display = 'none';
-            username.style.border = '2px solid limegreen';
+            taxID.style.border = '2px solid limegreen';
         }
 
         if(addressvalue ===''){
             error8.textContent = 'Please enter your company address!';
             error8.style.display ='block';
-            username.style.border = '2px solid red';
+            address.style.border = '2px solid red';
         }else{
             error8.style.display = 'none';
-            username.style.border = '2px solid limegreen';
+            address.style.border = '2px solid limegreen';
         }
-
-
-        if( error1.style.display =='none' &&  error2.style.display =='none'
-        &&  error3.style.display =='none' &&  error4.style.display =='none'
-        &&  error5.style.display =='none' &&  error6.style.display =='none'
-        &&  error7.style.display =='none' &&  error8.style.display =='none'){
+        
+        if (province.value === ''){
+            error9.textContent = 'Please enter a province!';
+            error9.style.display ='block';
+            province.style.border = '2px solid red';
+        }
+        else if (!Array.from(provinceList.options).some(option => option.value === province.value)){
+            error9.textContent = 'Please enter a proper province!';
+            error9.style.display ='block';
+            province.style.border = '2px solid red';
+        }
+        else{
+            error9.style.display = 'none';
+            province.style.border = '2px solid limegreen';
+        }
+        console.log(error1.style.display);
+        console.log(error2.style.display);
+        console.log(error3.style.display);
+        console.log(error4.style.display);
+        console.log(error4.style.color);
+        console.log(error4.style.display ==='none' || error4.style.color !== 'red');
+        console.log(error5.style.display);
+        if( error1.style.display ==='none' 
+        &&  error2.style.display ==='none' 
+        &&  error3.style.display ==='none' 
+        &&  (error4.style.display ==='none' || error4.style.color !== 'red') 
+        &&  error5.style.display ==='none'
+        &&  error6.style.display ==='none'
+        &&  error7.style.display ==='none'
+        &&  error8.style.display ==='none'){
+            console.log("bbbbbbbbbbbbbbbbbbbb");
+            form.submit();
+        }
+        else if (error1.style.display =='none' &&  error2.style.display =='none'
+        &&  error3.style.display =='none' &&  (error4.style.display =='none' || error4.style.color !== 'red')
+        &&  error5.style.display =='none' && select.value == "Jobseeker"){
+            console.log("aaaaaaaaaaaaa");
             form.submit();
         }
     });
+    function getPasswordStrength(password) {
+      // Define a set of regular expressions to match against
+      const regex = {
+        length: /.{8,}/,
+        length2: /.{12,}/,
+        length3: /.{15,}/,
+        lowercase: /[a-z]/,
+        uppercase: /[A-Z]/,
+        number: /\d/
+      };
 
+      let score = 0;
+
+      // Check for each regex match and add to the score
+      if (regex.length.test(password)) score += 1;
+      if (regex.length2.test(password)) score += 1;
+      if (regex.length3.test(password)) score += 1;
+      if (regex.lowercase.test(password)) score += 1;
+      if (regex.uppercase.test(password)) score += 1;
+      if (regex.number.test(password)) score += 1;
+
+      // Check for repeated characters
+      const passwordLength = password.length;
+      if (!new RegExp(`(.)\\1{${passwordLength},}`).test(password)) score += 1;
+
+      // Return the final score
+      return score;
+    }
+
+    function up() {
+        passwordvalue = password.value;
+        if (password.value === ''){
+            error4.textContent ='Please enter your password!';
+            error4.style.display ='block';
+            password.style.border = '2px solid red';
+            error4.style.color = 'red';
+        }
+        else if (passwordvalue.length < 8){
+            error4.textContent ='Your password must have at least 8 characters!';
+            error4.style.display ='block';
+            password.style.border = '2px solid red';
+            error4.style.color = 'red';
+        }
+        else if (getPasswordStrength(passwordvalue) <= 4){
+            error4.textContent ='Your password is too weak!';
+            error4.style.display ='block';
+            error4.style.color = 'red';
+        }
+        else if (getPasswordStrength(passwordvalue) <= 6){
+            error4.textContent ='Your password is decent!';
+            error4.style.display ='block';
+            error4.style.color = 'goldenrod';
+            password.style.border = '2px solid limegreen';
+        }
+        else{
+            error4.textContent ='Your password is strong!';
+            error4.style.display ='block';
+            error4.style.color = 'limegreen';
+            password.style.border = '2px solid limegreen';
+        }
+        
+    }
+    password.addEventListener("keyup",up); 
     </script>
 </body>
 </html>

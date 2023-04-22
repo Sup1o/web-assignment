@@ -159,7 +159,7 @@ header button:hover{
     top: -15px;
     height: 0px;
 }
-#error3, #error4, #error5, #error6, #error7, #error8{
+#error3, #error4, #error5, #error6, #error7, #error8, #error9{
     display: none;
     color: red;
     position: relative;
@@ -236,6 +236,7 @@ header button:hover{
 
 /*Register Form CSS*/
 .form-container{
+    width: 100vw;
     min-height: 100vh;
     display: flex;
     align-items: center;
