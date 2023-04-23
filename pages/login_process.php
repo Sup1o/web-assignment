@@ -1,8 +1,7 @@
 <?php
-    session_start();
     $servername = "localhost";
-	$db_username = "Kiet";
-	$db_password = "123";
+	$db_username = "root";
+	$db_password = "";
 
     $dbname = "CVManagement";
     $conn =  mysqli_connect($servername,$db_username,$db_password,$dbname);
@@ -31,15 +30,16 @@
     if (mysqli_num_rows($check) != 0 && password_verify($password,$row['password'])){
         unset($_SESSION['login_error']);
         $_SESSION['login'] = $typ;
+        $_SESSION['user_id'] = $row['id'];
         // session_write_close();
-        header("Location: ../index.php?page=home");
+        header("Location: ./index.php?page=home");
         exit();
     }
     else{
         $_SESSION['login_error'] = "1";
         // echo $_SESSION['login_error'];
         // session_write_close();
-        header("Location: ../index.php?page=login");
+        header("Location: ./index.php?page=login");
         exit();
     }
 ?>
