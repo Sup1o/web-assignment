@@ -140,7 +140,7 @@ input[type="submit"] {
 <body>
 <?php // Check if the form was submitted successfully
 if (isset($_GET['success']) && $_GET['success'] == 'true') {
-    echo '<script>alert("CV submitted successfully!");</script>';
+    echo '<script>alert("CV created successfully!")</script>';
 } ?>
 <form action="./index.php?page=submit_cv" method="POST">
   <h2>Job Objective</h2>

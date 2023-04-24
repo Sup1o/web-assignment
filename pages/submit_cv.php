@@ -107,6 +107,6 @@ for ($i = 0; $i < count($_POST['certificate_title']); $i++) {
     mysqli_query($conn, $sql);
 }
 
-header('Location: ./index.php?page=home&submit_cv=1');
+header('Location: ./index.php?page=create_cv&success=true');
 exit();
 ?>
