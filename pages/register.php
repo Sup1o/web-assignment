@@ -14,24 +14,25 @@
 </header>
 <body>
     <div class = "form-container" id="input">
-        <form action="./index.php?page=register_processing" method ="POST">
+        <form action="./index.php?page=register_process" method ="POST">
             <h3>Register</h3>
-            <?php
-            // Print type of Error
-            if(isset($error)){
-                foreach($error as $error){
-                    echo '<span class="error-message">'.$error.'</span>';
-                };
-            };
-            ?>
+            
 
-            <input type= "text" name ="username" id="username" placeholder="Enter your name">
+            <input type= "text" name ="username" id="username" placeholder="Enter your name" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['username']: ''?>">
             <div id="error1"> error message</div>
+            
 
-            <input type = "email" name = "email" id="email" placeholder ="Enter your email">
-            <div id="error2"> error message</div>
-
-            <input type = "text" name="phonenumber" id ="phonenumber" placeholder ="Enter your phone number">
+            <input type = "email" name = "email" id="email" placeholder ="Enter your email" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['email']: ''?>" style="<?php echo isset($_SESSION['inputs'])? "border: 2px solid red": ''?>">
+            <?php
+                if (isset($_SESSION['inputs'])){
+                    echo "<div id=\"error2\" style =\"display: block;\"> This email is already registered</div>" ; 
+                }
+                else{
+                    echo "<div id=\"error2\"> error message</div>";
+                }
+            ?>
+            
+            <input type = "text" name="phonenumber" id ="phonenumber" placeholder ="Enter your phone number" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['phonenumber']: ''?>">
             <div id="error3"> error message</div>
 
             <input type= "password" name ="password" id="password"  placeholder ="Enter your password">
@@ -40,19 +41,19 @@
             <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password">
             <div id ="error5"> error message</div>
 
-            <select name="user_type" id="user_type">
+            <select name="user_type" id="user_type" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['user_type']: ''?>">
                 <option value="Jobseeker"> Jobseeker</option>
                 <option value="Company"> Company</option>
             </select>
 
             <div class ="Company" id = "Company" style="display:none">
-                <input type ="companyname" name="companyname" id ="companyname" placeholder ="Enter company's name">
+                <input type ="companyname" name="companyname" id ="companyname" placeholder ="Enter company's name" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['companyname']: ''?>">
                 <div id ="error6"> error message </div>
 
-                <input type="TAXID" id ="TAXID" placeholder ="Enter company's TAX number">
+                <input type="TAXID" id ="TAXID" name="TAXID" placeholder ="Enter company's TAX number" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['TAXID']: ''?>">
                 <div id = "error7"> error message</div>
                 
-                <input type="text" id="province" name ="province"placeholder ="Select province" list="provinces">
+                <input type="text" id="province" name ="province"placeholder ="Select province" list="provinces" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['province']: ''?>">
                 <datalist id="provinces">
                     <option value="" selected >Select</option>
                     <option value="Hà Nội">
@@ -120,12 +121,12 @@
                     <option value="Yên Bái">
                 </datalist>
                 <div id = "error9"> error message</div>
-                <input type="address" id ="address" placeholder ="Enter company's address">
+                <input type="address" id ="address" placeholder ="Enter company's address" name="address" value="<?php echo isset($_SESSION['inputs'])? $_SESSION['inputs']['address']: ''?>">
                 <div id = "error8"> error message</div>
             </div>
 
             <input type="submit" value="Register Now" class ="form-btn">
-            <p> Already have an account? <a href="index.php">Login now</a></p>
+            <p> Already have an account? <a href="../index.php?page=logout" >Login now</a></p>
         </form>
     </div>
     
@@ -146,6 +147,7 @@
     const error6 = document.getElementById('error6');
     const error7 = document.getElementById('error7');
     const error8 = document.getElementById('error8');
+    const error9 = document.getElementById('error9');
     var select = document.getElementById('user_type');
     const companyname = document.getElementById('companyname');
     const taxID = document.getElementById('TAXID');
@@ -291,13 +293,7 @@
             error9.style.display = 'none';
             province.style.border = '2px solid limegreen';
         }
-        console.log(error1.style.display);
-        console.log(error2.style.display);
-        console.log(error3.style.display);
-        console.log(error4.style.display);
-        console.log(error4.style.color);
-        console.log(error4.style.display ==='none' || error4.style.color !== 'red');
-        console.log(error5.style.display);
+
         if( error1.style.display ==='none' 
         &&  error2.style.display ==='none' 
         &&  error3.style.display ==='none' 
@@ -306,13 +302,11 @@
         &&  error6.style.display ==='none'
         &&  error7.style.display ==='none'
         &&  error8.style.display ==='none'){
-            console.log("bbbbbbbbbbbbbbbbbbbb");
             form.submit();
         }
         else if (error1.style.display =='none' &&  error2.style.display =='none'
         &&  error3.style.display =='none' &&  (error4.style.display =='none' || error4.style.color !== 'red')
         &&  error5.style.display =='none' && select.value == "Jobseeker"){
-            console.log("aaaaaaaaaaaaa");
             form.submit();
         }
     });
