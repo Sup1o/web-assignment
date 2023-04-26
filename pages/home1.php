@@ -28,10 +28,48 @@
 		input[type=submit]:hover {
 			background-color: #45a049;
 		}
+		.company {
+            border: 1px solid black;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: 335px 335px;
+            grid-template-rows: repeat(auto);
+            grid-gap: 10px;
+        }
+
+        .company h2 {
+            margin-top: 0;
+            grid-column: 1 / span 2;
+        }
+
+        .company p {
+            margin: 0;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
 	</style>
+	<link rel="stylesheet" href="./pages/styles.css">
 </head>
+<header>
+    <div class = "logo">CV MANAGEMENT</div>
+    <ul class = "nav">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
+        </li>
+        <li>
+            <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
+        </li>
+    </ul>
+    <button onclick="myFunction()">Log out</button>
+</header>
 <body>
-	<h1>Search Candidates</h1>
+	
+<h1>Search Candidates</h1>
 	<form method="post" action="search.php">
 		<label for="degree">Degree:</label>
 		<input type="text" name="degree" placeholder="Enter degree...">

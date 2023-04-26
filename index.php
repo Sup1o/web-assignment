@@ -26,6 +26,8 @@ if (isset($_GET['page'])) {
         include './pages/create_cv.php';
     } elseif ($page == 'submit_cv') {
         include './pages/submit_cv.php';
+    } elseif ($page == 'employer') {
+        include '/pages/employer.php';
     } elseif ($_SESSION['login'] == 0) {
         if ($page == 'home') {
             include './pages/home0.php';
@@ -43,7 +45,9 @@ if (isset($_GET['page'])) {
     } elseif ($_SESSION['login'] == -1) {
         if ($page == 'home') {
             include './pages/home-1.php';
-        } else {
+        } elseif ($page == 'find_jobs-1') {
+            include './pages/find_jobs-1.php';
+        }else {
             include './pages/home-1.php';
         }
     } else {

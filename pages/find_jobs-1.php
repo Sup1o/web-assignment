@@ -20,7 +20,7 @@
             <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
         </li>
     </ul>
-    <button onclick="myFunction()">Log out</button>
+    <button onclick="myFunction()">Log in</button>
 </header>
 <body>
     <div class="job_page" >
