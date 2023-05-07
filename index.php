@@ -22,6 +22,8 @@
                 include "./pages/home0.php";
             else if ($page == 'find_jobs')
                 include "./pages/find_jobs0.php";
+            else if ($page == 'get_jobs')
+                include "./pages/get_jobs.php";
             else
                 include "./pages/home0.php";
         }
