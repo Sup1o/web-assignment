@@ -17,8 +17,8 @@
             include "./pages/login_process.php";
         else if ($page == 'register_process')
             include "./pages/register_process.php";
-        elseif ($page == 'create_cv')
-            include './pages/create_cv.php';
+        else if ($page == 'company')
+            include "./pages/company.php";
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
                 include "./pages/home0.php";
@@ -26,6 +26,10 @@
                 include "./pages/find_jobs0.php";
             else if ($page == 'get_jobs')
                 include "./pages/get_jobs.php";
+            else if ($page == 'create_cv')
+                include './pages/create_cv.php';
+            else if ($page == 'job')
+                include './pages/job_description.php';
             else
                 include "./pages/home0.php";
         }

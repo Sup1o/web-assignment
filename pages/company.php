@@ -4,100 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./pages/styles.css">
     <title>EMPLOYER Page</title>
     <style>
-        @font-face {
-        font-family: 'Montserrat';
-        src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-        }
-
-        * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        }
-
-        body {
-        overflow-x: hidden;
-        }
-
-        /* css for header and footer */
-        header {
-        position: relative;
-        left: 0px;
-        top: 0px;
-        width: 100vw;
-        height: 10vh;
-        background-color: #24252A;
-        display: flex;
-        align-items: center;
-        padding: 0 2.5vw;
-        box-sizing: border-box;
-        justify-content: flex-end;
-        }
-
-        footer {
-        position: relative;
-        width: 100vw;
-        height: 10vh;
-        background-color: #24252A;
-        display: flex;
-        align-items: center;
-        padding: 0 2.5vw;
-        justify-content: center;
-        }
-
-        header .logo {
-        color: white;
-        font-size: 24px;
-        font-weight: bold;
-        text-align: center;
-        font-family: 'Montserrat', sans-serif;
-        margin-right: auto;
-        }
-
-        nav {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        }
-
-        nav li {
-        margin-right: 30px;
-        }
-
-        nav li:last-child {
-        margin-right: 0;
-        }
-
-        nav li a {
-        font-family: 'Montserrat', sans-serif;
-        color: white;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 16px;
-        border: none;
-        outline: none;
-        transition: all 0.3s ease 0s;
-        }
-
-        nav li a:hover {
-        color: #37a3fa;
-        }
-
-        header button {
-        /* width: 6vw; */
-        cursor: pointer;
-        padding: 9px 25px;
-        background-color: #006ac0;
-        border-radius: 30px;
-        transition: all 0.3s ease 0s;
-        }
-
-        header button:hover {
-        background-color: #37a3fa;
-        }
         .company {
             border: 1px solid black;
             padding: 10px;
@@ -125,7 +34,7 @@
 </head>
 <header>
     <div class = "logo">CV MANAGEMENT</div>
-    <ul class = "nav">
+    <ul class = "nav" id="list">
         <li>
             <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
         </li>
@@ -136,7 +45,15 @@
             <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
         </li>
     </ul>
-    <button onclick="myFunction()">Log out</button>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=company">Profile</a>
+        </li>
+        <li>
+            <a href="./index.php?page=logout">Log out</a>
+        </li>
+    </ul>
 </header>
 <body>
     <h1>Employer Page</h1>
@@ -147,7 +64,7 @@
     $db_password = "";
     $conn =  mysqli_connect($servername, $db_username, $db_password, $dbname);
     
-    $company_id = $_GET['id'];
+    $company_id = $_SESSION['user_id'];
     $employer_query = "SELECT * FROM EMPLOYER WHERE id = '$company_id'";
     $employer_result = mysqli_query($conn, $employer_query);
 
@@ -171,5 +88,23 @@
     mysqli_close($conn);
     ?>
 </body>
+<script>
+    function myFunction() {
+        const show = document.getElementById('profile');
+        const lst = document.getElementById('list');
+        const button = document.querySelector('header button');
+        if (!show.style.display || show.style.display == 'none')
+            show.style.display = 'block';
+        else
+            show.style.display = 'none';
 
+        if (window.innerWidth <= 650 && show.style.display == 'block'){
+            lst.style.display = 'none';
+            // button.style.margin-right = 'auto';
+        }
+        else{
+            lst.style.display = 'block';
+        }
+    }
+</script>
 </html>

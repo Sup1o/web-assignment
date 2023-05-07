@@ -2,6 +2,7 @@
   font-family: 'Montserrat';
   src: url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -52,6 +53,7 @@ li, a, button{
     border: none;
     outline: none;
 }
+
 .nav{
     list-style: none;
     white-space: nowrap;
@@ -71,14 +73,20 @@ li, a, button{
 header button{
     /* width: 6vw; */
     cursor: pointer;
-    padding: 9px 25px;
+    width: 50px;
+    height: 50px;
+    /* padding: 9px 25px; */
     background-color: #006ac0;
-    border-radius: 30px;
+    border-radius: 50%;
     transition: all 0.3s ease 0s;
+    /* font-size: 40px; */
     
 }
 header button:hover{
     background-color: #37a3fa;
+}
+#profile{
+    display: none;
 }
 /* css for the body */
 .formContainer {
@@ -347,5 +355,17 @@ header button:hover{
     .form-container form input,
     .form-container form select{
         font-size: 15px;
+    }
+    .job_page .table .table_element .job_name{
+        font-size: 150%;
+        margin-bottom: 1vh;
+    }
+    .job_page .table .table_element .company_name{
+        font-size: 100%;
+        margin-bottom: 1vh;
+    }
+    .job_page .search input{
+        font-size: 100%;
+        padding: 5%;
     }
 }

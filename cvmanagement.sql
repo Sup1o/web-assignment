@@ -16,18 +16,18 @@ CREATE TABLE IF NOT EXISTS EMPLOYER (
 );
 
 CREATE TABLE IF NOT EXISTS JOBS (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  employer_id INT,
+  id VARCHAR(10) PRIMARY KEY,
+  employer_id VARCHAR(6),
   name VARCHAR(50) NOT NULL,
   salary DECIMAL(10, 2) NOT NULL,
   description TEXT NOT NULL,
-  FOREIGN KEY (employer_id) REFERENCES EMPLOYER(id)
+  FOREIGN KEY (employer_id) REFERENCES employer(id)
 );
 
 CREATE TABLE IF NOT EXISTS JOB_REQUIRED_SKILLS (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  job_id INT,
+  job_id VARCHAR(10),
   skill_name VARCHAR(20),
+  PRIMARY KEY (job_id, skill_name),
   FOREIGN KEY (job_id) REFERENCES JOBS(id)
 );
 
@@ -41,53 +41,46 @@ CREATE TABLE IF NOT EXISTS EMPLOYEE (
 );
 
 CREATE TABLE IF NOT EXISTS CV (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  employee_id INT,
+  id VARCHAR(10),
+  employee_id VARCHAR(6),
   position VARCHAR(20) NOT NULL,
   additional_information TEXT,
+  PRIMARY KEY (id, employee_id),
   FOREIGN KEY (employee_id) REFERENCES EMPLOYEE(id)
 );
 
 CREATE TABLE IF NOT EXISTS CV_DEGREES (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  cv_id INT,
-  degree_name VARCHAR(50) NOT NULL,
-  school_name VARCHAR(100) NOT NULL,
-  date_obtained DATE NOT NULL,
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
-);
+  CV_id VARCHAR(10),
+  degree_name VARCHAR(20),
+  PRIMARY KEY (CV_id, degree_name),
+  FOREIGN KEY (CV_id) REFERENCES CV(id)
+); 
 
 CREATE TABLE IF NOT EXISTS CV_CERTIFICATES (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  cv_id INT,
-  certificate_name VARCHAR(50) NOT NULL,
-  issuing_organization VARCHAR(100) NOT NULL,
-  date_obtained DATE NOT NULL,
-  expiration_date DATE,
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
-);
+  CV_id VARCHAR(10),
+  certificate_name VARCHAR(20),
+  PRIMARY KEY (CV_id, certificate_name),
+  FOREIGN KEY (CV_id) REFERENCES CV(id)
+); 
 
 CREATE TABLE IF NOT EXISTS CV_EXPERIENCE (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  cv_id INT,
-  job_title VARCHAR(50) NOT NULL,
-  company_name VARCHAR(50),
-  start_date DATE,
-  end_date DATE,
+  CV_id VARCHAR(10),
+  experience_id VARCHAR(10),
   description TEXT,
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
-);
+  PRIMARY KEY (CV_id, experience_id),
+  FOREIGN KEY (CV_id) REFERENCES CV(id)
+); 
 
 CREATE TABLE IF NOT EXISTS CV_WORK_HISTORY (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  cv_experience_id INT,
+  id VARCHAR(10) PRIMARY KEY NOT NULL,
+  cv_experience_id VARCHAR(10),
   task_description TEXT,
-  FOREIGN KEY (cv_experience_id) REFERENCES CV_EXPERIENCE(id)
+  FOREIGN KEY (cv_experience_id) REFERENCES CV_EXPERIENCE(CV_id)
 );
 
 CREATE TABLE IF NOT EXISTS CV_REFERENCE (
-  id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  cv_id INT,
+  id VARCHAR(10) PRIMARY KEY NOT NULL,
+  cv_id VARCHAR(10),
   name VARCHAR(50),
   relationship VARCHAR(50),
   phone_number VARCHAR(20),
