@@ -25,7 +25,7 @@
 </body>
 <script>
     function myFunction() {
-        window.location.href = "../index.php?page=logout";
+        window.location.href = "./index.php?page=logout";
     }
 </script>
 </html>

@@ -13,7 +13,8 @@ body {
 }
 
 form {
-  max-width: 800px;
+  width: 60%;
+  /* min-width: 500px; */
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
@@ -108,7 +109,7 @@ input[type="submit"] {
   margin-right: 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 650px) {
   .degree input[type="text"],
   .certificate input[type="text"],
   .experience input[type="text"],
@@ -118,6 +119,9 @@ input[type="submit"] {
   .certificate input[type="date"] {
     width: 100%;
     margin-right: 0;
+  }
+  form{
+    width: 95%;
   }
 }
         </style>

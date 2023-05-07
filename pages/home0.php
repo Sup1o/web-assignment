@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./pages/styles.css">
     <style>
-.home_container {
+    .home_container {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -48,13 +48,14 @@
 </header>
 <body>
 <div class="home_container">
-<h1>Hello, jobseeker!</h1>
+<h1>Welcome to CV Management site</h1>
+        <p>hello jobseekers!</p>
         <p>Welcome to our job management platform. You can use this site to find job listings, create your CV, and apply for jobs. We wish you the best of luck in your job search!</p>
 </div>
 </body>
 <script>
     function myFunction() {
-        window.location.href = "../index.php?page=logout";
+        window.location.href = "./index.php?page=logout";
     }
 </script>
 </html>

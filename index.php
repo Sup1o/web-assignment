@@ -17,6 +17,8 @@
             include "./pages/login_process.php";
         else if ($page == 'register_process')
             include "./pages/register_process.php";
+        elseif ($page == 'create_cv')
+            include './pages/create_cv.php';
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
                 include "./pages/home0.php";
@@ -27,21 +29,26 @@
             else
                 include "./pages/home0.php";
         }
-    } elseif ($_SESSION['login'] == 1) {
-        if ($page == 'home') {
-            include './pages/home1.php';
+        else if ($_SESSION['login'] == 1) {
+            if ($page == 'home') {
+                include './pages/home1.php';
+            }
+            else if ($page == 'candidate_search') {
+                include './pages/candidate_search.php';
+            }
+            else {
+                include './pages/home1.php';
+            }
+        } elseif ($_SESSION['login'] == -1) {
+            if ($page == 'home') {
+                include './pages/home-1.php';
+            } else {
+                include './pages/home-1.php';
+            }
         } else {
-            include './pages/home1.php';
+            header('Location: ./index.php?page=home');
         }
-    } elseif ($_SESSION['login'] == -1) {
-        if ($page == 'home') {
-            include './pages/home-1.php';
-        } else {
-            include './pages/home-1.php';
-        }
-    } else {
-        header('Location: ./index.php?page=home');
-    }
+    } 
     else {
         header('Location: ./index.php?page=home');
     }
