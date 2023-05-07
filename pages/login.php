@@ -53,7 +53,7 @@
                 <button id = 'choose3'>Login as Guests</button>
 
                 <div class="line"> </div>
-                <button type = "button" id = "a" style="position: relative; bottom: -50px;" >Register</button>
+                <button type = "button" id = "a" style="position: relative; bottom: -50px;"  >Register</button>
             </form>
             
         </div>
@@ -94,7 +94,7 @@
         }
         function myFunction() {
             // alert("Button clicked");
-            window.location.href = "../index.php?page=register";
+            window.location.href = "./index.php?page=register";
         }
         document.getElementById("a").addEventListener("click", myFunction);
         document.getElementById("b").addEventListener("click", myFunction);
