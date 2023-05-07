@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./pages/styles.css">
+	<title>Search Candidates</title>
+	<style>
+		label {
+			display: block;
+			margin: 10px 0;
+			font-weight: bold;
+		}
+		input[type=text], select {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+		}
+		input[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+	</style>
 </head>
-<header>
-    <div class = "logo">CV MANAGEMENT</div>
-    <ul class = "nav">
-        <li>
-            <a href="#">Home</a>
-        </li>
-        <li>
-            <a href="#">Candidate Check</a>
-        </li>
-    </ul>
-    <button onclick="myFunction()">Log out</button>
-</header>
 <body>
-    home page for Employer!
+	<h1>Search Candidates</h1>
+	<form method="post" action="search.php">
+		<label for="degree">Degree:</label>
+		<input type="text" name="degree" placeholder="Enter degree...">
+		
+		<label for="certificate">Certificate:</label>
+		<input type="text" name="certificate" placeholder="Enter certificate...">
+		
+		<label for="skills">Skills:</label>
+		<input type="text" name="skills" placeholder="Enter skills...">
+		
+		<label for="location">Location:</label>
+		<input type="text" name="location" placeholder="Enter location...">
+		
+		<input type="submit" value="Search Candidates">
+	</form>
 </body>
-<script>
-    function myFunction() {
-        window.location.href = "../index.php?page=logout";
-    }
-</script>
 </html>

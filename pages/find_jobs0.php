@@ -17,7 +17,7 @@
             <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
         </li>
         <li>
-            <a href="#" title = "CVMangement CV page">Create CV</a>
+            <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
         </li>
     </ul>
     <button onclick="myFunction()">Log out</button>
