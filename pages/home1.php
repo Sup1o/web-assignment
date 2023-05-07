@@ -49,6 +49,27 @@
             padding: 10px;
             text-align: center;
         }
+		.company {
+            border: 1px solid black;
+            padding: 10px;
+            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: 335px 335px;
+            grid-template-rows: repeat(auto);
+            grid-gap: 10px;
+        }
+
+        .company h2 {
+            margin-top: 0;
+            grid-column: 1 / span 2;
+        }
+
+        .company p {
+            margin: 0;
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
 	</style>
 	<link rel="stylesheet" href="./pages/styles.css">
 </head>

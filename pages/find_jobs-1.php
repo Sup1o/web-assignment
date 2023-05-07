@@ -20,7 +20,7 @@
             <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
         </li>
     </ul>
-    <button onclick="myFunction()">Log out</button>
+    <button onclick="myFunction()">Log in</button>
 </header>
 <body>
     <div class="job_page" >
@@ -41,7 +41,6 @@
         window.location.href = "../index.php?page=logout";
     }
     const TableBody = document.getElementById("TableBody");
-    const SearchInput = document.getElementById("SearchInput");
     function LoadTable(){
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -49,26 +48,9 @@
                 TableBody.innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "./index.php?page=get_jobs");
+        xhttp.open("GET", "./pages/get_jobs.php");
         xhttp.send();
     }
-    function up(){
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                TableBody.innerHTML = this.responseText;
-                addRowListeners();
-            }
-        };
-        if (SearchInput.value === ''){
-            LoadTable();
-        }
-        else{
-            xhttp.open("GET", "./index.php?page=get_jobs&name=" + SearchInput.value, true);
-            xhttp.send();
-        }
-    }
-    SearchInput.addEventListener("keyup",up);
     LoadTable()
 </script>
 </html>
