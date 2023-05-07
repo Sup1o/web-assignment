@@ -228,6 +228,7 @@ header button:hover{
 }
 
 .job_page .table .table_element{
+    cursor: pointer;
     position: relative;
     width: 100%;
     height: 22.5%;

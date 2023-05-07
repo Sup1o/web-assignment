@@ -17,8 +17,7 @@
             include "./pages/login_process.php";
         else if ($page == 'register_process')
             include "./pages/register_process.php";
-        else if ($page == 'company')
-            include "./pages/company.php";
+        
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
                 include "./pages/home0.php";
@@ -40,6 +39,8 @@
             else if ($page == 'candidate_search') {
                 include './pages/candidate_search.php';
             }
+            else if ($page == 'company')
+                include "./pages/company.php";
             else {
                 include './pages/home1.php';
             }
