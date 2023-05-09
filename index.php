@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['login']) || isset($_SESSION['login_error'])){
-        if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register" && $_GET['page'] !=="register_processing")
+        if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register" && $_GET['page'] !=="register_process")
             header("Location: ./index.php?page=login");
     }  
 
