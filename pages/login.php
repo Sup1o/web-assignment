@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CVManagement Login</title>
     <link rel="stylesheet" href="./pages/styles.css">
     <style>
         #choose{
@@ -26,11 +26,16 @@
             padding: 0 12%;
             color: red;
         }
-        @media screen and (max-width:650px) {
-            body{
-                overflow-x: hidden;
+        @media (max-width:650px){
+            header .logo{
+                display: block; 
+                margin-left: auto;
+            }
+            header{
+                justify-content: center; 
             }
         }
+        
     </style>
 </head>
 <header>
@@ -69,7 +74,8 @@
                 <input type="hidden" name="login" id = "login_type">
                 
                 <div class="line"> </div>
-                <button style="position: relative; bottom: -50px;" id = "b">Register</button>
+                <!-- <button style="position: relative; bottom: -50px;">Back</button> -->
+                <button style="position: relative;" id = "b">Register</button>
             </form>
 
             

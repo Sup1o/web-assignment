@@ -91,15 +91,17 @@ header button:hover{
 /* css for the body */
 .formContainer {
     width: 100vw;
+    /* top: 20%; */
     background: #4FC3F7;
     position: relative;
-    height: 90vh;
-    height: 90dvh;
+    min-height: 90vh;
+    /* height: 90dvh; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .formContainer .formWrapper {
+    position: relative;
     background-color: white;
     height: 550px;
     padding: 20px 60px;
@@ -324,9 +326,119 @@ header button:hover{
     font-size: 20px;
     padding: 10px;
 }
+/* profile css */
+.back {
+    background: rgb(99, 39, 120)
+}
+.container.rounded.bg-white.mt-5.mb-5.surround {
+  min-height: 80vh;
+  border-radius: 20px 20px !important;
+}
 
+.row.my-row >div{
+    margin-top: 12.5%;
+}
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
 
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    /* cursor: pointer */
+}
+
+.labels {
+    font-size: 100%;
+}
+.info{
+    font-size: 150%;
+}
+.add-experience{
+    background: #2196F3;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#profile-type{
+    font-size: 50px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #2196F3;
+}
+.cvs{
+    overflow: auto; 
+    max-height: 230px;
+    /* height: 90%; */
+}
+.cvs .inside{
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 90px !important;
+    border-radius: 5px;
+    background: #2196F3;
+    margin-bottom: 1%;
+    /* border-left: 5px solid red; */
+    padding: 1% 2.5%;
+    display: flex;
+    align-items: center;
+}
+.inside .btn-get-value{
+    /* position: relative; */
+    margin-left: auto;
+    background: white;
+    /* color: #2196F3; */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+#add{
+    background: red !important;
+}
+.cvs .inside .text-right{
+    color: white;
+}
+.cvs::-webkit-scrollbar{
+    display: none;
+}
 @media (max-width:650px) {
+    .formContainer .formWrapper{
+        width: 300px;
+    }
+    .formContainer .formWrapper form .button, .formContainer .formWrapper form button, .formContainer .formWrapper form input{
+        width: 100%;
+    }
+    .formContainer .formWrapper .logo{
+        font-size: 120%;
+        padding: 13% 0%;
+    }
     header .logo{
         display: none;
     }

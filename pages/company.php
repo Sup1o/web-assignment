@@ -33,16 +33,13 @@
     <link rel="stylesheet" href="./pages/styles.css">
 </head>
 <header>
-    <div class = "logo">CV MANAGEMENT</div>
+    <div class = "logo" >CV MANAGEMENT</div>
     <ul class = "nav" id="list">
         <li>
             <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
         </li>
         <li>
-            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
-        </li>
-        <li>
-            <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
+            <a href="./index.php?page=candidate_search" title = "CVMangement candidate search">Candidate Search</a>
         </li>
     </ul>
     <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>

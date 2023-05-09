@@ -14,7 +14,7 @@
             <a href="./index.php?page=home">Home</a>
         </li>
         <li>
-            <a href = "./index.php?page=find_jobs-1" title = "CVMangement find jobs page">Find Jobs</a>
+            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
         </li>
         
     </ul>

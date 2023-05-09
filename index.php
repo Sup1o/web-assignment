@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['login']) || isset($_SESSION['login_error'])){
-        if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register" && $_GET['page'] !=="register_processing")
+        if ((!isset($_GET['page']) || $_GET['page'] !== "login") &&  $_GET['page'] !== "register" && $_GET['page'] !=="register_process")
             header("Location: ./index.php?page=login");
     }  
 
@@ -17,16 +17,24 @@
             include "./pages/login_process.php";
         else if ($page == 'register_process')
             include "./pages/register_process.php";
+        else if ($page == 'get_jobs')
+            include "./pages/get_jobs.php";
         
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
                 include "./pages/home0.php";
             else if ($page == 'find_jobs')
                 include "./pages/find_jobs0.php";
-            else if ($page == 'get_jobs')
-                include "./pages/get_jobs.php";
+            else if ($page == 'submit_cv')
+                include "./pages/submit_cv.php";
+            else if ($page == 'get_info')
+                include "./pages/get_info.php";
+            else if ($page == 'get_profile_cv')
+                include "./pages/get_profile_cv.php";
             else if ($page == 'create_cv')
                 include './pages/create_cv.php';
+            else if ($page == 'profile')
+                include './pages/profile0.php';
             else if ($page == 'job')
                 include './pages/job_description.php';
             else
@@ -39,6 +47,7 @@
             else if ($page == 'candidate_search') {
                 include './pages/candidate_search.php';
             }
+            
             else if ($page == 'company')
                 include "./pages/company.php";
             else {
@@ -47,7 +56,10 @@
         } elseif ($_SESSION['login'] == -1) {
             if ($page == 'home') {
                 include './pages/home-1.php';
-            } else {
+            } 
+            else if ($page == 'find_jobs')
+                include "./pages/find_jobs-1.php";
+            else {
                 include './pages/home-1.php';
             }
         } else {
