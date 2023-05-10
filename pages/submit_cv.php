@@ -59,53 +59,51 @@ for ($i = 0; $i < count($certificate_titles); $i++) {
     mysqli_query($conn, $sql);
 }
 
-// // Insert professional experiences into CV_EXPERIENCE table
-// for ($i = 0; $i < count($_POST['experience_title']); $i++) {
-//   $title = mysqli_real_escape_string($conn, $_POST['experience_title'][$i]);
-//   $company = mysqli_real_escape_string(
-//       $conn,
-//       $_POST['experience_company'][$i]
-//   );
-//   $duration = mysqli_real_escape_string(
-//       $conn,
-//       $_POST['experience_duration'][$i]
-//   );
-//   $description = mysqli_real_escape_string(
-//       $conn,
-//       $_POST['experience_description'][$i]
-//   );
-
-//   $sql = "INSERT INTO cv_experience (cv_id, job_title, company_name, duration, description)
-//         VALUES ('$cv_id', '$title', '$company', '$duration', '$description')";
-//   mysqli_query($conn, $sql);
-
-//   // Insert work history tasks into CV_WORK_HISTORY table
-//   $exp_id = mysqli_insert_id($conn);
-//   for ($j = 0; $j < count($_POST['work_tasks'][$i]); $j++) {
-//       $task = mysqli_real_escape_string($conn, $_POST['work_tasks'][$i][$j]);
-//       $sql = "INSERT INTO cv_work_history (cv_experience_id, task_description)
-//           VALUES ('$exp_id', '$task')";
-//       mysqli_query($conn, $sql);
-//   }
-// }
-
-// Insert certificates information
-for ($i = 0; $i < count($_POST['certificate_title']); $i++) {
-    $title = mysqli_real_escape_string($conn, $_POST['certificate_title'][$i]);
-    $org = mysqli_real_escape_string(
+// Insert professional experiences into CV_EXPERIENCE table
+for ($i = 0; $i < count($_POST['experience_title']); $i++) {
+    $title = mysqli_real_escape_string($conn, $_POST['experience_title'][$i]);
+    $company = mysqli_real_escape_string(
         $conn,
-        $_POST['certificate_organization'][$i]
+        $_POST['experience_company'][$i]
     );
-    $year = mysqli_real_escape_string($conn, $_POST['certificate_year'][$i]);
-    $exp = mysqli_real_escape_string(
+    $description = mysqli_real_escape_string(
         $conn,
-        $_POST['certificate_expiration'][$i]
+        $_POST['experience_description'][$i]
     );
 
-    $sql = "INSERT INTO cv_certificates (cv_id, certificate_name, issuing_organization, date_obtained, expiration_date)
-          VALUES ('$cv_id', '$title', '$org', '$year', '$exp')";
+    $sql = "INSERT INTO cv_experiences (cv_id, job_title, company_name, description)
+        VALUES ('$cv_id', '$title', '$company', '$description')";
     mysqli_query($conn, $sql);
 }
+
+// Insert references into CV_REFERENCES table
+$reference_names = $_POST['reference_name'];
+$reference_phones = $_POST['reference_phone'];
+$reference_emails = $_POST['reference_email'];
+$reference_relationships = $_POST['reference_relationship'];
+for ($i = 0; $i < count($reference_names); $i++) {
+    $reference_name = mysqli_real_escape_string(
+        $conn,
+        $reference_names[$i]
+    );
+    $reference_phone = mysqli_real_escape_string(
+        $conn,
+        $reference_phones[$i]
+    );
+    $reference_email = mysqli_real_escape_string(
+        $conn,
+        $reference_emails[$i]
+    );
+    $reference_relationship = mysqli_real_escape_string(
+        $conn,
+        $reference_relationships[$i]
+    );
+
+    $sql = "INSERT INTO cv_references (cv_id, name, phone_number, email, relationship)
+                VALUES ('$cv_id', '$reference_name', '$reference_phone', '$reference_email', '$reference_relationship')";
+    mysqli_query($conn, $sql);
+}
+
 
 header('Location: ./index.php?page=create_cv&success=true');
 exit();
