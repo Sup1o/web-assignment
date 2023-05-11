@@ -2,55 +2,142 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Search Candidates</title>
 	<style>
-		label {
-			display: block;
-			margin: 10px 0;
-			font-weight: bold;
-		}
-		input[type=text], select {
-			width: 100%;
-			padding: 12px 20px;
-			margin: 8px 0;
-			box-sizing: border-box;
-			border: 2px solid #ccc;
-			border-radius: 4px;
-		}
-		input[type=submit] {
-			background-color: #4CAF50;
-			color: white;
-			padding: 14px 20px;
-			margin: 8px 0;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-		}
-		input[type=submit]:hover {
-			background-color: #45a049;
-		}
-		.company {
-            border: 1px solid black;
-            padding: 10px;
-            margin-bottom: 10px;
-            display: grid;
-            grid-template-columns: 335px 335px;
-            grid-template-rows: repeat(auto);
-            grid-gap: 10px;
-        }
+    body {
+      background-color: #4FC3F7;
+      font-family: Arial, sans-serif;
+    }
 
-        .company h2 {
-            margin-top: 0;
-            grid-column: 1 / span 2;
-        }
+    form {
+      width: 60%;
+      /* min-width: 500px; */
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .company p {
-            margin: 0;
-            border: 1px solid black;
-            padding: 10px;
-            text-align: center;
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    button[type="button"] {
+      display: block;
+      padding: 10px;
+      margin-bottom: 20px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input[type="submit"] {
+      display: block;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #2196F3;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .degree,
+    .certificate,
+    .experience,
+    .work,
+    .reference,
+    .skill {
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .degree input[type="text"],
+    .certificate input[type="text"],
+    .experience input[type="text"],
+    .work input[type="text"],
+    .reference input[type="text"],
+    .skills input[type="text"] {
+      width: calc(33.33% - 10px);
+      margin-right: 10px;
+    }
+
+    .certificate input[type="text"],
+    .certificate input[type="date"] {
+      width: calc(25% - 10px);
+      margin-right: 10px;
+    }
+
+    .experience input[type="text"] {
+      width: calc(25% - 10px);
+      margin-right: 10px;
+    }
+
+    .work input[type="text"] {
+      width: calc(25% - 10px);
+      margin-right: 10px;
+    }
+
+    .reference input[type="text"] {
+      width: calc(25% - 10px);
+      margin-right: 10px;
+    }
+
+    .reference input[type="email"] {
+      width: calc(33.33% - 10px);
+      margin-right: 10px;
+    }
+    p{
+        margin-top: 2%;
+        font-size: 20px;
+    }
+    #profile-type{
+        margin-bottom: 30px;
+        font-size: 2.5vw;
+    }
+    @media (max-width: 650px) {
+        #profile-type{
+            font-size: 30px;
         }
-	</style>
+      .degree input[type="text"],
+      .certificate input[type="text"],
+      .experience input[type="text"],
+      .work input[type="text"],
+      .reference input[type="text"],
+      .reference input[type="email"],
+      .certificate input[type="date"] {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      form {
+        width: 95%;
+      }
+    }
+  </style>
 	<link rel="stylesheet" href="./pages/styles.css">
 </head>
 <header>
@@ -73,7 +160,7 @@
         </li>
     </ul>
 </header>
-<body>
+<!-- <body>
 <h1>Search Candidates</h1>
 	<form method="post" action="search.php">
 		<label for="degree">Degree:</label>
@@ -90,9 +177,74 @@
 		
 		<input type="submit" value="Search Candidates">
 	</form>
-</body>
+</body> -->
+<body>
+  
+  <form action="./index.php?page=submit_cv" method="POST">
+    <h1 id="profile-type" style="font-size:40px;">Search Candidates</h1>
 
+    <h2>Education</h2>
+    <div class="degree">
+      <input type="text" name="degree[]" placeholder="Degree Name">
+    </div>
+    <button type="button" onclick="addDegree()">Add Degree</button>
+
+    <h2>Certificates</h2>
+    <div class="certificate">
+      <input type="text" name="certificate_title[]" placeholder="Certificate Title">
+    </div>
+    <button type="button" onclick="addCertificate()">Add Certificate</button>
+    <h2>Skills</h2>
+    <div class="skill">
+      <input type="text" name="skill[]" placeholder="Skill Name">
+    </div>
+    <button type="button" onclick="addSkill()">Add Skills</button>
+    <input type="submit" value="Submit">
+  </form>
+
+</body>
 <script>
+    function addSkill(){
+    // Create a new div element with the degree class
+    console.log("aaaaaaaa");
+    var newDegree = document.createElement('div');
+    newDegree.className = 'skill';
+
+    // Add input fields for degree name, school name, and year
+    newDegree.innerHTML = '<input type="text" name="skill[]" placeholder="Skill Name">';
+
+    // Insert the new degree block after the last degree block
+    var degrees = document.getElementsByClassName('skill');
+    var lastDegree = degrees[degrees.length - 1];
+    lastDegree.parentNode.insertBefore(newDegree, lastDegree.nextSibling);
+  }
+  function addDegree() {
+    // Create a new div element with the degree class
+    var newDegree = document.createElement('div');
+    newDegree.className = 'degree';
+
+    // Add input fields for degree name, school name, and year
+    newDegree.innerHTML = '<input type="text" name="degree[]" placeholder="Degree Name">';
+
+    // Insert the new degree block after the last degree block
+    var degrees = document.getElementsByClassName('degree');
+    var lastDegree = degrees[degrees.length - 1];
+    lastDegree.parentNode.insertBefore(newDegree, lastDegree.nextSibling);
+  }
+
+  function addCertificate() {
+    // Create a new div element with the certificate class
+    var newCertificate = document.createElement('div');
+    newCertificate.className = 'certificate';
+
+    // Add input fields for certificate title, organization name, year, and expiration date
+    newCertificate.innerHTML = '<input type="text" name="certificate_title[]" placeholder="Certificate Title">';
+
+    // Insert the new certificate block after the last certificate block
+    var certificates = document.getElementsByClassName('certificate');
+    var lastCertificate = certificates[certificates.length - 1];
+    lastCertificate.parentNode.insertBefore(newCertificate, lastCertificate.nextSibling);
+  }
     function myFunction() {
         const show = document.getElementById('profile');
         const lst = document.getElementById('list');

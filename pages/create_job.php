@@ -16,7 +16,7 @@
     form {
       width: 60%;
       /* min-width: 500px; */
-      margin: 20px auto;
+      margin: 10vh auto;
       padding: 20px;
       background-color: #fff;
       border: 1px solid #ddd;
@@ -68,8 +68,7 @@
     .certificate,
     .experience,
     .work,
-    .reference,
-    .skill {
+    .reference {
       margin-bottom: 20px;
       border: 1px solid #ddd;
       padding: 10px;
@@ -80,8 +79,7 @@
     .certificate input[type="text"],
     .experience input[type="text"],
     .work input[type="text"],
-    .reference input[type="text"],
-    .skill input[type="text"] {
+    .reference input[type="text"] {
       width: calc(33.33% - 10px);
       margin-right: 10px;
     }
@@ -132,124 +130,67 @@
   </style>
 </head>
 <header>
-  <div class="logo">CV MANAGEMENT</div>
-  <ul class="nav" id="list">
-    <li>
-      <a href="./index.php?page=home" title="CVMangement home page">Home</a>
-    </li>
-    <li>
-      <a href="./index.php?page=find_jobs" title="CVMangement find jobs page">Find Jobs</a>
-    </li>
-    <li>
-      <a href="./index.php?page=create_cv" title="CVMangement CV page">Create CV</a>
-    </li>
-  </ul>
-  <button onclick="myFunction()"><img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg==" /></button>
-  <ul class="nav" id="profile">
-    <li>
-      <a href="./index.php?page=profile">Profile</a>
-    </li>
-    <li>
-      <a href="./index.php?page=logout">Log out</a>
-    </li>
-  </ul>
+    <div class = "logo" >CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href="./index.php?page=candidate_search" title = "CVMangement candidate search">Candidate Search</a>
+        </li>
+    </ul>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=company">Profile</a>
+        </li>
+        <li>
+            <a href="./index.php?page=logout">Log out</a>
+        </li>
+    </ul>
 </header>
 
-<body>
+<body >
+  <?php // Check if the form was submitted successfully
+  if (isset($_GET['success']) && $_GET['success'] == 'true') {
+    echo '<script>alert("CV created successfully!")</script>';
+  } ?>
   
-  <form action="./index.php?page=submit_cv" method="POST">
-    <h1 id="profile-type" style="font-size:40px;">Create A CV</h1>
-    <h2>Expected Position (Job Objective)</h2>
-    <input type="text" name="job_objective">
+  <form action="./index.php?page=submit_job" method="POST">
+    <h1 id="profile-type" style="font-size:40px;">Post A Job</h1>
+    <h2>Job Name</h2>
+    <input type="text" name="job_name" >
 
-    <h2>Education</h2>
+
+    <h2>Salary</h2>
+    <input type="text" name="salary" >
+
+    <h2>Required skills</h2>
     <div class="degree">
-      <input type="text" name="degree[]" placeholder="Degree Name">
-      <input type="text" name="school[]" placeholder="School Name">
-      <input type="text" name="year[]" placeholder="Date (yyyy-mm-dd)">
+      <input type="text" name="skills[]" placeholder="Skills Name">
     </div>
-    <button type="button" onclick="addDegree()">Add Degree</button>
+    <button type="button" onclick="addDegree()">Add another skills</button>
 
-    <h2>Certificates</h2>
-    <div class="certificate">
-      <input type="text" name="certificate_title[]" placeholder="Certificate Title">
-      <input type="text" name="certificate_organization[]" placeholder="Organization Name">
-      <input type="text" name="certificate_year[]" placeholder="Date (yyyy-mm-dd)">
-      <input type="text" name="certificate_expiration[]" placeholder="Expiration Date (yyyy-mm-dd)">
-    </div>
-    <button type="button" onclick="addCertificate()">Add Certificate</button>
-
-    <h2>Professional Experience</h2>
-    <div class="experience">
-      <input type="text" name="experience_title[]" placeholder="Title">
-      <input type="text" name="experience_company[]" placeholder="Company Name">
-      <textarea name="experience_description[]" placeholder="Description"></textarea>
-    </div>
-    <button type="button" onclick="addExperience()">Add Experience</button>
-    <h2>Skills</h2>
+    <h2>Job Description</h2>
+    <textarea name="description"></textarea>
     
-    <div class="skill">
-      <input type="text" name="skill[]" placeholder="Skill Name">
-    </div>
-    <button type="button" onclick="addSkill()">Add Skills</button>
-    <!-- <h2>Working History</h2>
-    <div class="work">
-      <input type="text" name="work_title[]" placeholder="Title">
-      <input type="text" name="work_company[]" placeholder="Company Name">
-      <textarea name="work_tasks[]" placeholder="Tasks"></textarea>
-    </div>
-    <button type="button" onclick="addWork()">Add Work</button> -->
-
-    <h2>Additional Information</h2>
-    <textarea name="additional_info"></textarea>
-
-    <h2>References</h2>
-    <div class="reference">
-      <input type="text" name="reference_name[]" placeholder="Name">
-      <input type="text" name="reference_phone[]" placeholder="Phone Number">
-      <input type="text" name="reference_email[]" placeholder="Email">
-      <input type="text" name="reference_relationship[]" placeholder="Relationship">
-    </div>
-    <button type="button" onclick="addReference()">Add References</button>
-
     <input type="submit" value="Submit">
   </form>
 
 </body>
-<?php // Check if the form was submitted successfully
-  if (isset($_GET['success']) && $_GET['success'] == 'true') {
-    echo '<script>alert("CV created successfully!")</script>';
-  } ?>
 <script>
   // function myFunction() {
   //     if(confirm("Are you sure you want to log out?")){
   //         window.location.href = "./index.php?page=logout";
   //     }
   // }
-  function addSkill(){
-    // Create a new div element with the degree class
-    console.log("aaaaaaaa");
-    var newDegree = document.createElement('div');
-    newDegree.className = 'skill';
-
-    // Add input fields for degree name, school name, and year
-    newDegree.innerHTML = '<input type="text" name="skill[]" placeholder="Skill Name">';
-
-    // Insert the new degree block after the last degree block
-    var degrees = document.getElementsByClassName('skill');
-    var lastDegree = degrees[degrees.length - 1];
-    lastDegree.parentNode.insertBefore(newDegree, lastDegree.nextSibling);
-  }
   function addDegree() {
     // Create a new div element with the degree class
     var newDegree = document.createElement('div');
     newDegree.className = 'degree';
 
     // Add input fields for degree name, school name, and year
-    newDegree.innerHTML = '<input type="text" name="degree[]" placeholder="Degree Name">' +
-      '<input type="text" name="school[]" placeholder="School Name">' +
-      '<input type="text" name="year[]" placeholder="Date (yyyy-mm-dd)">';
+    newDegree.innerHTML = '<input type="text" name="skills[]" placeholder="Skills Name">';
 
     // Insert the new degree block after the last degree block
     var degrees = document.getElementsByClassName('degree');

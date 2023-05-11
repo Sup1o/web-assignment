@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS JOB_REQUIRED_SKILLS (
   job_id VARCHAR(10),
   skill_name VARCHAR(20),
   PRIMARY KEY (job_id, skill_name),
-  FOREIGN KEY (job_id) REFERENCES JOBS(id)
+  FOREIGN KEY (job_id) REFERENCES JOBS(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS EMPLOYEE (
@@ -45,16 +45,21 @@ CREATE TABLE IF NOT EXISTS CV (
   employee_id VARCHAR(6),
   position VARCHAR(100),
   additional_information TEXT,
-  FOREIGN KEY (employee_id) REFERENCES EMPLOYEE(id)
+  FOREIGN KEY (employee_id) REFERENCES EMPLOYEE(id) ON DELETE CASCADE
 );
-
+CREATE TABLE IF NOT EXISTS CV_SKILLS(
+  cv_id INT,
+  skills_name VARCHAR(50),
+  PRIMARY KEY (cv_id, skills_name),
+  FOREIGN KEY (cv_id) REFERENCES CV(id) ON DELETE CASCADE
+);
 CREATE TABLE IF NOT EXISTS CV_DEGREES (
   cv_id INT,
   degree_name VARCHAR(50),
   school_name VARCHAR(50),
   date_obtained DATE,
   PRIMARY KEY (cv_id, degree_name),
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
+  FOREIGN KEY (cv_id) REFERENCES CV(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS CV_CERTIFICATES (
@@ -64,7 +69,7 @@ CREATE TABLE IF NOT EXISTS CV_CERTIFICATES (
   issuing_organization VARCHAR(50),
   date_obtained DATE,
   expiration_date DATE,
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
+  FOREIGN KEY (cv_id) REFERENCES CV(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS CV_EXPERIENCES (
@@ -73,7 +78,7 @@ CREATE TABLE IF NOT EXISTS CV_EXPERIENCES (
   job_title VARCHAR(50),
   company_name VARCHAR(50),
   description VARCHAR(50),
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
+  FOREIGN KEY (cv_id) REFERENCES CV(id) ON DELETE CASCADE
 ); 
 
 -- CREATE TABLE IF NOT EXISTS CV_WORK_HISTORY (
@@ -91,14 +96,17 @@ CREATE TABLE IF NOT EXISTS CV_EXPERIENCES (
 -- );
 
 CREATE TABLE IF NOT EXISTS CV_REFERENCES (
-  id INT PRIMARY KEY NOT NULL,
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   cv_id INT,
   name VARCHAR(20),
   relationship VARCHAR(20),
   phone_number VARCHAR(20),
   email VARCHAR(20),
-  FOREIGN KEY (cv_id) REFERENCES CV(id)
+  FOREIGN KEY (cv_id) REFERENCES CV(id) ON DELETE CASCADE
 );
+
+INSERT INTO EMPLOYER (id, name, email, password, phonenumber, company_name, tax_number, location, address)
+VALUES ('E00001', 'Nguyen Van A', 'Pananasonic@example.com', '$2y$10$7n4fsf.SxafgEgrBssLMEeFf3p0..yRZSomEs9RlSu6itoeJy1o8y', '123-456-7890', 'Pananasonics Corp', '1234567890', 'Ha Noi', '123 Hang Buom St');
 
 INSERT INTO EMPLOYEE (id, name, email, password, phonenumber)
 VALUES ('E00002', 'Tran Van B', 'VanB@example.com', '$2y$10$CDuYez2WcLtC4eyBKbH2NeToslQFGxnwdtzPLAni7983bTSKTuITu', '123-456-7891');
