@@ -11,6 +11,7 @@
   
 body{
     overflow-x: hidden;
+    min-height: 50vh;
 }
 /* css for header and footer */
 header{
@@ -30,7 +31,7 @@ footer{
     position: relative;
     width: 100vw;
     height: 30vh;
-    
+    /* top: 70vh; */
     background-color: #24252A;
     /* display: flex; */
     align-items: center;

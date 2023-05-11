@@ -57,10 +57,14 @@
                 include "./pages/get_profile_job.php";
             else if ($page == 'get_info')
                 include "./pages/get_info.php";
-            else if ($page == 'company')
+            else if ($page == 'profile')
                 include "./pages/company.php";
             else if ($page == 'job')
                 include './pages/job_description.php';
+            else if ($page == 'search')
+                include './pages/search.php';
+            else if ($page == 'cv')
+                include './pages/cv.php';
             else {
                 include './pages/home1.php';
             }
@@ -68,6 +72,7 @@
             if ($page == 'home') {
                 include './pages/home-1.php';
             } 
+            
             else if ($page == 'find_jobs')
                 include "./pages/find_jobs-1.php";
             else if ($page == 'job')

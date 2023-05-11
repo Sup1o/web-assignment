@@ -168,11 +168,14 @@
         <li>
             <a href="./index.php?page=candidate_search" title = "CVMangement candidate search">Candidate Search</a>
         </li>
+        <li>
+            <a href="./index.php?page=create_job" title = "CVMangement create job">Post A Job</a>
+        </li>
     </ul>
     <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
     <ul class = "nav" id="profile">
         <li>
-            <a href="./index.php?page=company">Profile</a>
+            <a href="./index.php?page=profile">Profile</a>
         </li>
         <li>
             <a href="./index.php?page=logout">Log out</a>
@@ -350,6 +353,21 @@
     </div>
 
 </body>
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
 <script>
 
     function myFunction() {

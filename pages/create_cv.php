@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CV MANAGEMENT CREATE CV</title>
   <link rel="stylesheet" href="./pages/styles.css">
   <style>
     body {
@@ -217,6 +217,21 @@
   </form>
 
 </body>
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
 <?php // Check if the form was submitted successfully
   if (isset($_GET['success']) && $_GET['success'] == 'true') {
     echo '<script>alert("CV created successfully!")</script>';
@@ -229,7 +244,6 @@
   // }
   function addSkill(){
     // Create a new div element with the degree class
-    console.log("aaaaaaaa");
     var newDegree = document.createElement('div');
     newDegree.className = 'skill';
 

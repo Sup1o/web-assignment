@@ -1,4 +1,8 @@
 <?php
+    if (!$_POST){
+        header("Location: ../index.php?page=home");
+        exit();
+    }
     $servername = "localhost";
 	$db_username = "root";
 	$db_password = "";

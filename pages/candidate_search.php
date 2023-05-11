@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Search Candidates</title>
+    <link rel="stylesheet" href="./pages/styles.css">
 	<style>
     body {
       background-color: #4FC3F7;
       font-family: Arial, sans-serif;
+      
     }
 
     form {
       width: 60%;
       /* min-width: 500px; */
       margin: 20px auto;
+      min-height: 90vh;
       padding: 20px;
       background-color: #fff;
       border: 1px solid #ddd;
@@ -138,7 +141,7 @@
       }
     }
   </style>
-	<link rel="stylesheet" href="./pages/styles.css">
+	
 </head>
 <header>
     <div class = "logo" >CV MANAGEMENT</div>
@@ -147,13 +150,16 @@
             <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
         </li>
         <li>
-            <a href="#" title = "CVMangement candidate search">Candidate Search</a>
+            <a href="./index.php?page=candidate_search" title = "CVMangement candidate search">Candidate Search</a>
+        </li>
+        <li>
+            <a href="./index.php?page=create_job" title = "CVMangement create job">Post A Job</a>
         </li>
     </ul>
     <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
     <ul class = "nav" id="profile">
         <li>
-            <a href="./index.php?page=company">Profile</a>
+            <a href="./index.php?page=profile">Profile</a>
         </li>
         <li>
             <a href="./index.php?page=logout">Log out</a>
@@ -178,11 +184,11 @@
 		<input type="submit" value="Search Candidates">
 	</form>
 </body> -->
-<body>
+<body >
   
-  <form action="./index.php?page=submit_cv" method="POST">
+  <form action="./index.php?page=search" method="POST">
     <h1 id="profile-type" style="font-size:40px;">Search Candidates</h1>
-
+    <br></br>
     <h2>Education</h2>
     <div class="degree">
       <input type="text" name="degree[]" placeholder="Degree Name">
@@ -199,14 +205,13 @@
       <input type="text" name="skill[]" placeholder="Skill Name">
     </div>
     <button type="button" onclick="addSkill()">Add Skills</button>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Search">
   </form>
 
 </body>
 <script>
     function addSkill(){
     // Create a new div element with the degree class
-    console.log("aaaaaaaa");
     var newDegree = document.createElement('div');
     newDegree.className = 'skill';
 
@@ -263,4 +268,19 @@
         }
     }
 </script>
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
 </html>
