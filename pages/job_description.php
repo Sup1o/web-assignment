@@ -7,7 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./pages/styles.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+
     <style>
+        a,
+        ul {
+            list-style: none;
+            text-decoration: none;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        h3 {
+            color: #fff;
+        }
+
         .job-list li {
             color: #000;
         }
@@ -26,7 +46,6 @@
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 20px;
             padding: 20px;
         }
 
@@ -55,7 +74,7 @@
             border-radius: 20px;
         }
 
-        h1 {
+        .company-wrapper>h1 {
             font-size: 36px;
             margin-bottom: 20px;
             width: 100%;
@@ -79,6 +98,22 @@
             font-size: 16px;
             margin-bottom: 5px;
             color: #666;
+        }
+
+        .job-title {
+            position: absolute;
+            left: 20px;
+            top: 10px;
+        }
+
+        .job-right {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+        }
+
+        .job-salary {
+            top: 30px;
         }
 
         @media screen and (max-width: 767px) {
@@ -135,7 +170,7 @@
 </header>
 
 <body style="background: #4FC3F7">
-    <div class="container rounded bg-white mt-5 mb-5 surround">
+    <div class="rounded mt-5 mb-5 surround" style="background: #4FC3F7">
         <?php
         // job description demo
         $dbname = "CVManagement";
@@ -155,28 +190,27 @@
                 echo "<div class='company-wrapper'>";
                 echo "<h1>Company Profile</h1>";
                 echo "<div class='company'>";
-                echo "<h2> Company name : " . $employer_row["company_name"] . "</h2>";
-                echo "<p> location : " . $employer_row["location"] . "</p>";
-                echo "<p> phone number : " . $employer_row["phonenumber"] . "</p>";
-                echo "<p> email : " . $employer_row["email"] . "</p>";
-                echo "<p> tax number : " . $employer_row["tax_number"] . "</p>";
-                echo "<p> address : " . $employer_row["address"] . "</p>";
-                echo "</div>";
+                echo "<h2> Company name : <i>" . $employer_row["company_name"] . "</i></h2>";
+                echo "<p> Location : <i>" . $employer_row["location"] . "</p>";
+                echo "<p> Phone number : <i>" . $employer_row["phonenumber"] . "</i></p>";
+                echo "<p> Email : <i>" . $employer_row["email"] . "</p>";
+                echo "<p> Tax number : <i>" . $employer_row["tax_number"] . "</i></p>";
+                echo "<p> Address : <i>" . $employer_row["address"] . "</i></p>";
                 echo "</div>";
                 echo "<br></br>";
 
                 echo "<div class='job-wrapper'>";
                 $job_query = "SELECT * FROM JOBS WHERE employer_id = '" . $employer_row["id"] . "' and name = '" . $_GET["job"] . "'";
                 $job_result = mysqli_query($conn, $job_query);
+                echo "<h3>Job list</h3>:";
                 while ($job_row = mysqli_fetch_assoc($job_result)) {
                     echo "<div class='job'>";
-                    echo "<h3>Job Details</h3>";
+                    echo "<i class='job-title'>" . $job_row["name"] . "</i>";
+                    echo "<i class='job-right'>" . $job_row["id"] . "</i>";
+                    echo "<i class='job-right job-salary'>" . $job_row["salary"] . "</i>";
                     echo "<ul class='job-list'>";
-                    echo "<li class='job-item'> Job id : " . $job_row["id"] . "</li>";
-                    echo "<li class='job-item'> Job name : " . $job_row["name"] . "</li>";
                     echo "<li class='job-item'> Job description : " . $job_row["description"] . "</li>";
-                    echo "<li class='job-item'> Job salary : " . $job_row["salary"] . "</li>";
-                    echo "<li> Job required skills: ";
+                    echo "<li class='job-item'> Job required skills: ";
                     echo "<a class='skills'>";
                     $skills_query = "SELECT * FROM job_required_skills WHERE job_id = '" . $job_row["id"] . "'";
                     $skills_result = mysqli_query($conn, $skills_query);
@@ -192,23 +226,29 @@
 
                 }
                 echo "</div>";
+                echo "</div>";
                 echo "<br></br>";
                 echo "<style>
         .job-wrapper{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+
         }
         .job{
-            width: 50%;
-            border: 1px solid black;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid #fff;
             padding: 10px;
+            background: #fff;
+            position: relative;
+            padding-top: 2rem;
         }
         .job-list{
             list-style-type: none;
         }
         .job-item{
-            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+        .job-item:first-of-type {
+            margin-top: 10px;
         }
         .skills{
             text-decoration: none;
