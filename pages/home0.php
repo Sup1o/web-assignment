@@ -5,31 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./pages/styles.css">
-    <style>
-    .home_container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: calc(100vh - 70px);
-        padding: 20px;
-    }
+    <link rel="stylesheet" href="./pages/home_css.css"> 
 
-    h1 {
-        font-size: 40px;
-        color: #2ecc71;
-        margin-bottom: 20px;
-    }
-
-    p {
-        font-size: 20px;
-        text-align: center;
-        line-height: 1.5;
-        color: #555;
-        max-width: 800px;
-    }
-    </style>
+    <link rel="stylesheet" href ="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <header>
     <div class = "logo">CV MANAGEMENT</div>
@@ -55,13 +35,58 @@
         </li>
     </ul>
 </header>
+
 <body>
-<div class="home_container">
-<h1>Welcome to CV Management site</h1>
-        <p>hello jobseekers!</p>
-        <p>Welcome to our job management platform. You can use this site to find job listings, create your CV, and apply for jobs. We wish you the best of luck in your job search!</p>
+<div style="min-height:220vh; background-color: aliceblue;">
+<div class="hello">
+    <p>WELCOME TO CV MANAGEMENT SITE<p>
 </div>
+
+<div class ="intro"> 
+    <p> Our website offers a CV management system to help job seekers manage
+    and organize their resumes more efficiently.</p>
+</div>
+
+<div class="service-container" >
+    
+    <div class ="service-content">
+        <a href="./index.php?page=home" title="GO TO HOME PAGE"> 
+            <div class ="box"> 
+                <i class='bx bx-home-alt'></i>
+            </div>
+        </a>
+        <a href="./index.php?page=find_jobs" title="GO TO SEARCH PAGE">
+            <div class =" box"> 
+                <i class='bx bx-search-alt-2'></i>
+            </div>
+        </a> 
+        <a href="./index.php?page=create_cv"title="CREATE YOUR CV ">
+            <div class ="box" > 
+                <i class='bx bx-add-to-queue'></i>
+            </div>
+        </a>
+    </div>
+</div>
+</div>
+
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
+
 </body>
+
 <script>
 
     function myFunction() {

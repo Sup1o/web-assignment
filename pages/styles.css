@@ -29,12 +29,23 @@ header{
 footer{
     position: relative;
     width: 100vw;
-    height: 10vh;
+    height: 30vh;
+    
     background-color: #24252A;
-    display: flex;
+    /* display: flex; */
     align-items: center;
-    padding: 0 2.5vw;
+    /* padding: 0 2.5vw; */
+    padding: 20px;
     justify-content: center;
+    color: aquamarine;
+    font-size: 24px;
+}
+footer .mssv{
+    padding: 25px;
+    display: flex;
+    font-size: 100%;
+    justify-content:right;
+    flex-direction: row;
 }
 header .logo{
     color: white;
@@ -428,7 +439,82 @@ header button:hover{
 .cvs::-webkit-scrollbar{
     display: none;
 }
+
+@media(width: 1280px){
+    body{
+        height: 50vh;
+    }
+    footer{
+        height: 100%;
+    }
+    footer .lop{
+        margin-right: 100px;
+    }
+}
+@media (width:360px){
+    footer{
+        padding: 0px;
+    }
+    footer .mssv{
+        display: block;
+    }
+}
+@media(width:820px){
+    body{
+        height: 65vh;
+    }
+    footer{
+        height: 100%;
+    }
+}
+@media (width: 280px){
+    footer .mssv{
+        padding: 10px;
+        font-size: 85%;
+    }
+}
+@media(height: 1368px){
+    body{
+        height: 278vh;
+        min-height: auto;
+    }
+    footer{
+        margin-top: -300px;
+    }
+}
+@media(width: 1024px){
+    footer{
+        height: 100%;
+    }
+}
+@media(width: 280px){
+    footer .mssv{
+        display: block;
+    }
+}
+@media(width: 768px){
+    footer{
+        height: 60vh;
+    }
+    
+}
+@media(max-width: 300px){
+    footer{
+        height: 80vh;
+        height: fit-content;
+        display: block;
+    }
+}
 @media (max-width:650px) {
+    footer{
+        height: fit-content;
+        height: 75vh;
+        display:block;
+    }
+    footer .mssv{
+        display: block;
+        margin-right: none;
+    }
     .formContainer .formWrapper{
         width: 300px;
     }
