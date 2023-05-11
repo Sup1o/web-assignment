@@ -47,7 +47,9 @@
             else if ($page == 'candidate_search') {
                 include './pages/candidate_search.php';
             }
-            
+            else if ($page == 'search') {
+                include './pages/search.php';
+            }
             else if ($page == 'company')
                 include "./pages/company.php";
             else {

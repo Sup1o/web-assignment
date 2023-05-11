@@ -75,7 +75,7 @@
 </header>
 <body>
 <h1>Search Candidates</h1>
-	<form method="post" action="search.php">
+	<form method="post" action="./index.php?page=search">
 		<label for="degree">Degree:</label>
 		<input type="text" name="degree" placeholder="Enter degree...">
 		
