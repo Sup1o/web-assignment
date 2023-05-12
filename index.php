@@ -8,7 +8,7 @@
     if(isset($_GET['page'])){
         $page = $_GET['page'];
         if ($page == 'logout')
-            include "./pages/logout.php";
+            include "./model/logout.php";
         else if ($page == 'login')
             include "./pages/login.php";
         else if ($page == 'register')

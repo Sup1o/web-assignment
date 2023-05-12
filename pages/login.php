@@ -67,7 +67,7 @@
             <span class="logo">CV MANAGEMENT</span>
             
             <form action="./index.php?page=login_process" method="POST">
-                <input type="email" placeholder="Email" id = "username" name = "email" value="">
+                <input type="email" placeholder="Email" id = "username" name = "email" value="<?php if(isset($_COOKIE['user'])) echo $_COOKIE['user'];?>">
                 <div id="error1">error message</div>
                 <input type="password" placeholder="Password" id = "password" name = "password">
                 <div id="error2">error message</div>

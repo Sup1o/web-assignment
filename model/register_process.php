@@ -14,14 +14,14 @@
     $typ = $_POST['user_type'];
 
     $error = 0;
-    $email = $_POST['email'];
-    $name = $_POST['username'];
-    $phonenumber = $_POST['phonenumber'];
-    $password = $_POST['password'];
-    $companyname = $_POST['companyname'];
-    $TAXID = $_POST['TAXID'];
-    $province = $_POST['province'];
-    $address = $_POST['address'];
+    $email = strip_tags($_POST['email']);
+    $name = strip_tags($_POST['username']);
+    $phonenumber = strip_tags($_POST['phonenumber']);
+    $password = strip_tags($_POST['password']);
+    $companyname = strip_tags($_POST['companyname']);
+    $TAXID = strip_tags($_POST['TAXID']);
+    $province = strip_tags($_POST['province']);
+    $address = strip_tags($_POST['address']);
 
     $email = mysqli_real_escape_string($conn, $email);
     $name = mysqli_real_escape_string($conn, $name);

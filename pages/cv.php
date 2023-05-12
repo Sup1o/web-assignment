@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CV Management CV info</title>
   <link rel="stylesheet" href="./pages/styles.css">
   <style>
     body {
@@ -138,30 +138,86 @@
     }
   </style>
 </head>
+<?php
+    // echo $_SERVER['HTTP_REFERER'];
+    if ($_SESSION['login'] == 1){
+?>
 <header>
-  <div class="logo">CV MANAGEMENT</div>
-  <ul class="nav" id="list">
-    <li>
-      <a href="./index.php?page=home" title="CVMangement home page">Home</a>
-    </li>
-    <li>
-      <a href="./index.php?page=find_jobs" title="CVMangement find jobs page">Find Jobs</a>
-    </li>
-    <li>
-      <a href="./index.php?page=create_cv" title="CVMangement CV page">Create CV</a>
-    </li>
-  </ul>
-  <button onclick="myFunction()"><img
-      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg==" /></button>
-  <ul class="nav" id="profile">
-    <li>
-      <a href="./index.php?page=profile">Profile</a>
-    </li>
-    <li>
-      <a href="./index.php?page=logout">Log out</a>
-    </li>
-  </ul>
+    <div class = "logo" >CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href="./index.php?page=candidate_search" title = "CVMangement candidate search">Candidate Search</a>
+        </li>
+        <li>
+            <a href="./index.php?page=create_job" title = "CVMangement create job">Post A Job</a>
+        </li>
+    </ul>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=profile">Profile</a>
+        </li>
+        <li>
+            <a href="./index.php?page=logout">Log out</a>
+        </li>
+    </ul>
 </header>
+<?php
+    }
+    else if ($_SESSION['login'] == 0){
+
+?>
+<header>
+    <div class = "logo">CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
+            <!-- <i class='bx bx-user' style="font-size: 2rem; color: red;"></i> -->
+        </li>
+        <li>
+            <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
+        </li>
+    </ul>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=profile">Profile</a>
+        </li>
+        <li>
+            <a href="./index.php?page=logout">Log out</a>
+        </li>
+    </ul>
+</header>
+<?php
+    }
+    else{
+?>
+<header>
+    <div class = "logo">CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
+        </li>   
+    </ul>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=logout">Log in</a>
+        </li>
+    </ul>
+</header>
+<?php
+    }
+?>
 
 <body>
   

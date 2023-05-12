@@ -6,8 +6,8 @@ $dbname = 'CVManagement';
 $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
 
 $employee_id = $_SESSION['user_id'];
-$job_objective = $_POST['job_objective'];
-$additional_info = $_POST['additional_info'];
+$job_objective = strip_tags($_POST['job_objective']);
+$additional_info = strip_tags($_POST['additional_info']);
 
 // Insert job objective and additional information into CV table
 $sql = "INSERT INTO cv (employee_id, position, additional_information)
@@ -23,12 +23,12 @@ try {
 $cv_id = mysqli_insert_id($conn);
 
 // Insert degrees into CV_DEGREES table
-$degree_names = $_POST['degree'];
-$school_names = $_POST['school'];
+$degree_names = ($_POST['degree']);
+$school_names = ($_POST['school']);
 $years = $_POST['year'];
 for ($i = 0; $i < count($degree_names); $i++) {
-    $degree_name = mysqli_real_escape_string($conn, $degree_names[$i]);
-    $school_name = mysqli_real_escape_string($conn, $school_names[$i]);
+    $degree_name = mysqli_real_escape_string($conn, strip_tags($degree_names[$i]));
+    $school_name = mysqli_real_escape_string($conn, strip_tags($school_names[$i]));
     $year = mysqli_real_escape_string($conn, $years[$i]);
 
     if ($degree_name == "" || $school_name == "" || $year == "")
@@ -43,26 +43,26 @@ for ($i = 0; $i < count($degree_names); $i++) {
 }
 
 // Insert certificates into CV_CERTIFICATES table
-$certificate_titles = $_POST['certificate_title'];
-$certificate_organizations = $_POST['certificate_organization'];
-$certificate_years = $_POST['certificate_year'];
-$certificate_expirations = $_POST['certificate_expiration'];
+$certificate_titles = ($_POST['certificate_title']);
+$certificate_organizations = ($_POST['certificate_organization']);
+$certificate_years = ($_POST['certificate_year']);
+$certificate_expirations = ($_POST['certificate_expiration']);
 for ($i = 0; $i < count($certificate_titles); $i++) {
     $certificate_title = mysqli_real_escape_string(
         $conn,
-        $certificate_titles[$i]
+        strip_tags($certificate_titles[$i])
     );
     $certificate_organization = mysqli_real_escape_string(
         $conn,
-        $certificate_organizations[$i]
+        strip_tags($certificate_organizations[$i])
     );
     $certificate_year = mysqli_real_escape_string(
         $conn,
-        $certificate_years[$i]
+        strip_tags($certificate_years[$i])
     );
     $certificate_expiration = mysqli_real_escape_string(
         $conn,
-        $certificate_expirations[$i]
+        strip_tags($certificate_expirations[$i])
     );
     if ($certificate_title == "" || $certificate_organization == "" || $certificate_year == "" || $certificate_expiration == "")
         continue;
@@ -80,11 +80,11 @@ for ($i = 0; $i < count($_POST['experience_title']); $i++) {
     $title = mysqli_real_escape_string($conn, $_POST['experience_title'][$i]);
     $company = mysqli_real_escape_string(
         $conn,
-        $_POST['experience_company'][$i]
+        strip_tags($_POST['experience_company'][$i])
     );
     $description = mysqli_real_escape_string(
         $conn,
-        $_POST['experience_description'][$i]
+        strip_tags($_POST['experience_description'][$i])
     );
     if ($title == "" || $description == "" || $description == "")
         continue;
@@ -99,7 +99,7 @@ for ($i = 0; $i < count($_POST['experience_title']); $i++) {
 // insert skill
 
 for ($i = 0; $i < count($_POST['skill']); $i++){
-    $name = mysqli_real_escape_string($conn, $_POST['skill'][$i]);
+    $name = mysqli_real_escape_string($conn, strip_tags($_POST['skill'][$i]));
     if ($name == "")
         continue;
     $sql = "INSERT INTO cv_skills (cv_id, skills_name)
@@ -118,19 +118,19 @@ $reference_relationships = $_POST['reference_relationship'];
 for ($i = 0; $i < count($reference_names); $i++) {
     $reference_name = mysqli_real_escape_string(
         $conn,
-        $reference_names[$i]
+        strip_tags($reference_names[$i])
     );
     $reference_phone = mysqli_real_escape_string(
         $conn,
-        $reference_phones[$i]
+        strip_tags($reference_phones[$i])
     );
     $reference_email = mysqli_real_escape_string(
         $conn,
-        $reference_emails[$i]
+        strip_tags($reference_emails[$i])
     );
     $reference_relationship = mysqli_real_escape_string(
         $conn,
-        $reference_relationships[$i]
+        strip_tags($reference_relationships[$i])
     );
     if ($reference_name == "" || $reference_phone == "" || $reference_email == "" || $reference_relationship == "")
         continue;
