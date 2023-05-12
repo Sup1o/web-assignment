@@ -37,6 +37,8 @@
                 include './pages/profile0.php';
             else if ($page == 'job')
                 include './pages/job_description.php';
+            else if ($page == 'cv')
+                include './pages/cv.php';
             else
                 include "./pages/home0.php";
         }
@@ -47,9 +49,22 @@
             else if ($page == 'candidate_search') {
                 include './pages/candidate_search.php';
             }
-            
-            else if ($page == 'company')
+            else if ($page == 'create_job')
+                include "./pages/create_job.php";
+            else if ($page == 'submit_job')
+                include "./pages/submit_job.php";
+            else if ($page == 'get_profile_job')
+                include "./pages/get_profile_job.php";
+            else if ($page == 'get_info')
+                include "./pages/get_info.php";
+            else if ($page == 'profile')
                 include "./pages/company.php";
+            else if ($page == 'job')
+                include './pages/job_description.php';
+            else if ($page == 'search')
+                include './pages/search.php';
+            else if ($page == 'cv')
+                include './pages/cv.php';
             else {
                 include './pages/home1.php';
             }
@@ -57,8 +72,11 @@
             if ($page == 'home') {
                 include './pages/home-1.php';
             } 
+            
             else if ($page == 'find_jobs')
                 include "./pages/find_jobs-1.php";
+            else if ($page == 'job')
+                include './pages/job_description.php';
             else {
                 include './pages/home-1.php';
             }

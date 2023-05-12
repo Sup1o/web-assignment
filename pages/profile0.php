@@ -74,9 +74,23 @@
     </div>
 
 </body>
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
 <script>
     const TableBody = document.getElementById('personal');
-    
     function LoadInfo(){
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -88,22 +102,36 @@
         xhttp.open("GET", "./index.php?page=get_info");
         xhttp.send();
     }
+    let btnClicked = false;
+    
     function LoadCVs(){
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 document.getElementById('cvs').innerHTML = this.responseText;
-                // addRowListeners();
+                
                 const btns = document.querySelectorAll('.btn-get-value');
                 btns.forEach(btn => {
                   btn.addEventListener('click', () => {
                     const h4 = btn.parentNode.querySelector('h4');
-                    const value = h4.textContent;
-                    console.log(value);
+                    const value = h4.textContent.slice(1);
+                    const xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                      if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById('cvs').innerHTML = this.responseText;
+                        LoadCVs();
+                      }
+                    };
+                    btnClicked = true;
+                    xhttp.open("GET", "./index.php?page=get_profile_cv&del="+encodeURIComponent(value));
+                    xhttp.send();
                   });
                 });
+                addRowListeners();
+                
             }
         };
+        
         xhttp.open("GET", "./index.php?page=get_profile_cv");
         xhttp.send();
     }
@@ -124,9 +152,22 @@
             lst.style.display = 'block';
         }
     }
-    
+    function addRowListeners() {
+    //   const company = document.querySelector("#company_name").textContent;
+      const rows = document.querySelectorAll("#cvs .inside");
+        rows.forEach(row => {
+        row.addEventListener("click", () => {  
+            console.log("aaaaaaaaaaa"); 
+            if (btnClicked) btnClicked = false;
+            else{
+                const id = row.querySelector('.text-right').textContent.slice(1);
+                window.location.href = `./index.php?page=cv&id=${id}`;
+            }
+        });
 
-    
+        
+      });
+    }
     LoadInfo();
     LoadCVs();
 </script>

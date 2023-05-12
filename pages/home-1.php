@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CV MANAGEMENT</title>
     <link rel="stylesheet" href="./pages/styles.css">
+    <link rel="stylesheet" href="./pages/home_css.css"> 
+
+    <link rel="stylesheet" href ="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 <header>
     <div class = "logo">CV MANAGEMENT</div>
@@ -25,8 +28,50 @@
         </li>
     </ul>
 </header>
-<body>
-    home page for Guests!
+
+<div style="min-height:220vh; background-color: aliceblue;">
+<div class="hello">
+    <p>WELCOME TO CV MANAGEMENT SITE<p>
+</div>
+
+<div class ="intro"> 
+    <p> Our website offers a CV management system to help job seekers manage
+    and organize their resumes more efficiently.</p>
+</div>
+
+<div class="service-container" >
+    
+    <div class ="service-content">
+        <a href="./index.php?page=home" title="GO TO HOME PAGE"> 
+            <div class ="box"> 
+                <i class='bx bx-home-alt'></i>
+            </div>
+        </a>
+        <a href="./index.php?page=find_jobs" title="GO TO SEARCH PAGE">
+            <div class =" box"> 
+                <i class='bx bx-search-alt-2'></i>
+            </div>
+        </a> 
+    </div>
+</div>
+</div>
+
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
+
 </body>
 <script>
     function myFunction() {

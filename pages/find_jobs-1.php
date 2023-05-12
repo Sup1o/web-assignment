@@ -36,7 +36,19 @@
     </div>
 </body>
 <footer>
-
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
 </footer>
 <script>
     function myFunction() {
@@ -57,16 +69,46 @@
         }
     }
     const TableBody = document.getElementById("TableBody");
+    const SearchInput = document.getElementById("SearchInput");
     function LoadTable(){
         const xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 TableBody.innerHTML = this.responseText;
+                addRowListeners();
             }
         };
-        xhttp.open("GET", "./pages/get_jobs.php");
+        xhttp.open("GET", "./index.php?page=get_jobs");
         xhttp.send();
     }
+    
+    function up(){
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                TableBody.innerHTML = this.responseText;
+                addRowListeners();
+            }
+        };
+        if (SearchInput.value === ''){
+            LoadTable();
+        }
+        else{
+            xhttp.open("GET", "./index.php?page=get_jobs&name=" + SearchInput.value, true);
+            xhttp.send();
+        }
+    }
+    function addRowListeners() {
+      const rows = document.querySelectorAll("#TableBody .table_element");
+      rows.forEach(row => {
+        row.addEventListener("click", () => {
+          const company = row.querySelector('.company_name').textContent;
+          const jobName = row.querySelector('.job_name').textContent;
+          window.location.href = `./index.php?page=job&company=${company}&job=${jobName}`;
+        });
+      });
+    }
+    SearchInput.addEventListener("keyup",up);
     LoadTable()
 </script>
 </html>

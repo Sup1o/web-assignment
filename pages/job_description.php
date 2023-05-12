@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="./pages/styles.css">
     <!-- CSS only -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
@@ -99,23 +101,33 @@
             margin-bottom: 5px;
             color: #666;
         }
-
-        .job-title {
-            position: absolute;
-            left: 20px;
-            top: 10px;
+        .job-wrapper{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
         }
-
-        .job-right {
-            position: absolute;
-            right: 20px;
-            top: 10px;
+        .job{
+            width: 50%;
+            border: 1px solid black;
+            padding: 10px;
+            background : white;
         }
-
-        .job-salary {
-            top: 30px;
+        .job-list{
+            list-style-type: none;
         }
-
+        .job-item{
+            margin-bottom: 10px;
+        }
+        .skills{
+            text-decoration: none;
+            color: blue;
+        }
+        .skills:hover{
+            text-decoration: underline;
+        }
+        .row.my-row >div{
+            margin-top: 2%;
+        }
         @media screen and (max-width: 767px) {
             .company-wrapper {
                 padding: 10px;
@@ -143,23 +155,25 @@
         }
     </style>
 </head>
+<?php
+    // echo $_SERVER['HTTP_REFERER'];
+    if ($_SESSION['login'] == 1){
+?>
 <header>
-    <div class="logo">CV MANAGEMENT</div>
-    <ul class="nav" id="list">
+    <div class = "logo" >CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
         <li>
-            <a href="./index.php?page=home" title="CVMangement home page">Home</a>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
         </li>
         <li>
-            <a href="./index.php?page=find_jobs" title="CVMangement find jobs page">Find Jobs</a>
-            <!-- <i class='bx bx-user' style="font-size: 2rem; color: red;"></i> -->
+            <a href="./index.php?page=candidate_search" title = "CVMangement candidate search">Candidate Search</a>
         </li>
         <li>
-            <a href="./index.php?page=create_cv" title="CVMangement CV page">Create CV</a>
+            <a href="./index.php?page=create_job" title = "CVMangement create job">Post A Job</a>
         </li>
     </ul>
-    <button onclick="myFunction()"><img
-            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg==" /></button>
-    <ul class="nav" id="profile">
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
         <li>
             <a href="./index.php?page=profile">Profile</a>
         </li>
@@ -168,106 +182,192 @@
         </li>
     </ul>
 </header>
+<?php
+    }
+    else if ($_SESSION['login'] == 0){
 
-<body style="background: #4FC3F7">
-    <div class="rounded mt-5 mb-5 surround" style="background: #4FC3F7">
-        <?php
-        // job description demo
-        $dbname = "CVManagement";
-        $servername = "localhost";
-        $db_username = "root";
-        $db_password = "";
-        $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
+?>
+<header>
+    <div class = "logo">CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
+            <!-- <i class='bx bx-user' style="font-size: 2rem; color: red;"></i> -->
+        </li>
+        <li>
+            <a href="./index.php?page=create_cv" title = "CVMangement CV page">Create CV</a>
+        </li>
+    </ul>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=profile">Profile</a>
+        </li>
+        <li>
+            <a href="./index.php?page=logout">Log out</a>
+        </li>
+    </ul>
+</header>
+<?php
+    }
+    else{
+?>
+<header>
+    <div class = "logo">CV MANAGEMENT</div>
+    <ul class = "nav" id="list">
+        <li>
+            <a href="./index.php?page=home" title = "CVMangement home page">Home</a>
+        </li>
+        <li>
+            <a href = "./index.php?page=find_jobs" title = "CVMangement find jobs page">Find Jobs</a>
+        </li>   
+    </ul>
+    <button onclick="myFunction()"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAQtJREFUSEvNlNFxwkAMRN9WACUkFSSUQAdJB0kFKSGmAoYKKAFKSAl0kJSQVCBGjM3gs33yGJugH33ceZ9O8kpMHJpYn14AM3sGPgHPHgdgJclzNkKAmb0Auw6VV0n7HCELMLM58A14botf4FGS59aIALnqK8GlpK+hgKLsfa4LPgu/d58v8N7/ALOOAv+Ah8EzcNFJ/6Kq6tIH3udLHxSj+CAyUnQeGi0SiM47AaXJPgD3QtWaVM9XhTt50zXoVoCZvQHrjINTkDv5vW1tNACl+DZ6et/dVAP02D0Rt7GbUkCf1RBBaqsjBfjQniKF4PwgaVHdSQF2pfjpc0ln3dsCxqg+1fg/J4/1miOvUlsZTgKRSgAAAABJRU5ErkJggg=="/></button>
+    <ul class = "nav" id="profile">
+        <li>
+            <a href="./index.php?page=logout">Log in</a>
+        </li>
+    </ul>
+</header>
+<?php
+    }
+?>
+<body style="background: #4FC3F7;">
+    <div class="container rounded bg-white mt-5 mb-5 surround">
+        <div class="row my-row">
+            <h1 id="profile-type" style="margin-top: 5%;">EMPLOYEE</h1>
+            <div class="col-md-6 border-right">
+                <div class="p-3 py-5" >
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right" style="color: #2196F3;">Company Info</h4>
+                    </div>
+                    
+                    <div class="row mt-3" id="personal">
+                        <?php
+                        $dbname = "CVManagement";
+                        $servername = "localhost";
+                        $db_username = "root";
+                        $db_password = "";
+                        $conn = mysqli_connect($servername, $db_username, $db_password, $dbname);
+                
+                        $company_id = $_GET['company'];
+                        $employer_query = "SELECT * FROM EMPLOYER WHERE company_name = '$company_id'";
+                        $employer_result = mysqli_query($conn, $employer_query);
+                        // $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($employer_result);
+                        echo "
+                        <div class=\"col-md-12\" >
+                            <label class=\"labels\">Company Name</label>
+                            <P class=\"info\" id=\"company_name\">${row['company_name']} </P>
+                        </div>
+                        ";
+                        echo "
+                        <div class=\"col-md-12\">
+                            <label class=\"labels\">Location</label>
+                            <P class=\"info\">${row['location']} </P>
+                        </div>
+                        ";
+                        echo "
+                        <div class=\"col-md-12\">
+                            <label class=\"labels\">Address</label>
+                            <P class=\"info\">${row['address']} </P>
+                        </div>
+                        ";
+                        echo "
+                        <div class=\"col-md-12\">
+                            <label class=\"labels\">Tax Number</label>
+                            <P class=\"info\">${row['tax_number']} </P>
+                        </div>
+                        ";
+                        
+                        
+                        ?>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience">
+                        <h4 class="text-right" style="color: #2196F3;">Job Details</h4>
+                    </div>
+                    <br>
+                    <div>
+                    <?php
+                        
+                        $job_query = "SELECT * FROM JOBS WHERE employer_id = '" . $row["id"] . "' and name = '" . $_GET["job"] . "'";
+                        $job_result = mysqli_query($conn, $job_query);
+                        // $result = mysqli_query($conn, $sql);
+                        $row = mysqli_fetch_assoc($job_result);
+                        echo "
+                        <div class=\"col-md-12\" >
+                            <label class=\"labels\">Job Name</label>
+                            <P class=\"info\">${row['name']} </P>
+                        </div>
+                        ";
+                        echo "
+                        <div class=\"col-md-12\">
+                            <label class=\"labels\">Job salary</label>
+                            <P class=\"info\">${row['salary']} USD$</P>
+                        </div>
+                        ";
+                        echo "
+                        <div class=\"col-md-12\">
+                            <label class=\"labels\">Job description</label>
+                            <P class=\"info\">${row['description']} </P>
+                        </div>
+                        ";
+                        // echo "
+                        // <div class=\"col-md-12\">
+                        //     <label class=\"labels\">Tax Number</label>
+                        //     <P class=\"info\">${row['tax_number']} </P>
+                        // </div>
+                        // ";
+                        $skills_query = "SELECT * FROM job_required_skills WHERE job_id = '" . $row["id"] . "'";
+                        $skills_result = mysqli_query($conn, $skills_query);
+                        $skills = array();
+                        while ($skills_row = mysqli_fetch_assoc($skills_result)) {
+                            $skills[] = $skills_row["skill_name"];
+                        }
+                        echo "<div class=\"col-md-12\">";
+                        echo "<label class=\"labels\">Job required skills: </label>";
+                        echo"<br></br>";
+                        echo "<P class=\"info\">";
+                        echo implode(", ", $skills);
+                        echo " </P>";
+                        echo "</div>";
+                        ?>
+                        
+                    </div>
+                    
+                </div>
+            </div>
 
-        $company_id = $_GET['company'];
-        $employer_query = "SELECT * FROM EMPLOYER WHERE company_name = '$company_id'";
-        $employer_result = mysqli_query($conn, $employer_query);
-
-        if (mysqli_num_rows($employer_result) > 0) {
-
-            while ($employer_row = mysqli_fetch_assoc($employer_result)) {
-                $id = $employer_row["id"];
-                echo "<div class='company-wrapper'>";
-                echo "<h1>Company Profile</h1>";
-                echo "<div class='company'>";
-                echo "<h2> Company name : <i>" . $employer_row["company_name"] . "</i></h2>";
-                echo "<p> Location : <i>" . $employer_row["location"] . "</p>";
-                echo "<p> Phone number : <i>" . $employer_row["phonenumber"] . "</i></p>";
-                echo "<p> Email : <i>" . $employer_row["email"] . "</p>";
-                echo "<p> Tax number : <i>" . $employer_row["tax_number"] . "</i></p>";
-                echo "<p> Address : <i>" . $employer_row["address"] . "</i></p>";
-                echo "</div>";
-                echo "<br></br>";
-
-                echo "<div class='job-wrapper'>";
-                $job_query = "SELECT * FROM JOBS WHERE employer_id = '" . $employer_row["id"] . "' and name = '" . $_GET["job"] . "'";
-                $job_result = mysqli_query($conn, $job_query);
-                echo "<h3>Job list</h3>:";
-                while ($job_row = mysqli_fetch_assoc($job_result)) {
-                    echo "<div class='job'>";
-                    echo "<i class='job-title'>" . $job_row["name"] . "</i>";
-                    echo "<i class='job-right'>" . $job_row["id"] . "</i>";
-                    echo "<i class='job-right job-salary'>" . $job_row["salary"] . "</i>";
-                    echo "<ul class='job-list'>";
-                    echo "<li class='job-item'> Job description : " . $job_row["description"] . "</li>";
-                    echo "<li class='job-item'> Job required skills: ";
-                    echo "<a class='skills'>";
-                    $skills_query = "SELECT * FROM job_required_skills WHERE job_id = '" . $job_row["id"] . "'";
-                    $skills_result = mysqli_query($conn, $skills_query);
-                    $skills = array();
-                    while ($skills_row = mysqli_fetch_assoc($skills_result)) {
-                        $skills[] = $skills_row["skill_name"];
-                    }
-                    echo implode(", ", $skills);
-                    echo "</a>";
-                    echo "</li>";
-                    echo "</ul>";
-                    echo "</div>";
-
-                }
-                echo "</div>";
-                echo "</div>";
-                echo "<br></br>";
-                echo "<style>
-        .job-wrapper{
-
-        }
-        .job{
-            width: 100%;
-            border-radius: 20px;
-            border: 1px solid #fff;
-            padding: 10px;
-            background: #fff;
-            position: relative;
-            padding-top: 2rem;
-        }
-        .job-list{
-            list-style-type: none;
-        }
-        .job-item{
-            margin-left: 20px;
-        }
-        .job-item:first-of-type {
-            margin-top: 10px;
-        }
-        .skills{
-            text-decoration: none;
-            color: blue;
-        }
-        .skills:hover{
-            text-decoration: underline;
-        }
-
-                </style>";
-            }
-            // echo $id;
-            // $job_query = "SELECT * FROM EMPLOYER WHERE company_name = '$company_id'"
-        }
-
-        mysqli_close($conn);
-        ?>
+            <div style="display: flex; justify-content: flex-end; margin-bottom:10px; margin-right:10px;">
+            <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="border px-3 p-1 add-experience"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAI9JREFUSEvt1EsKwCAMBNDMSVtvZm/Sm6UIForYTj50p1tlnklEyM8LP+fLAmiHQy1S1SoiCqAwwQ308K0HV4a4gCG8GQeA/asKMxAJb7AJiIabgEw4BbLhEYC+mnHgdAaTKlwIBdqNMogJyCBmIIq4gAlSALR/6XW5gQdysnD6TNlPadkPVWAJvs8sgHbrAnTpRhk8QpSgAAAAAElFTkSuQmCC"/></a> 
+            </div>
+        </div>
     </div>
+
 </body>
+<footer>
+    <div class ="mssv">
+        <div class ="name" style="margin-right: auto;">
+            <p> Huỳnh Tuấn Kiệt-2052561</p>
+            <p> Hoàng Vương Vũ Hoàng-2052477 </p>
+            <p> Đặng Quốc Thịnh-1852761 </p>
+            <p> Đỗ Hoàng Hiếu-1952678</p>
+        </div>
+        <div class ="lop">
+            <p> Semester: 222 </p>
+            <p> CO3050 - Class: CC01 </p>
+            <p> Instructor: Nguyễn Đức Thái </p>
+        </div>
+    </div>
+</footer>
 <script>
 
     function myFunction() {
