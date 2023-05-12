@@ -35,6 +35,15 @@
         unset($_SESSION['login_error']);
         $_SESSION['login'] = $typ;
         $_SESSION['user_id'] = $row['id'];
+        // Set the cookie name and value
+        $cookie_name = "user";
+        $cookie_value = $email;
+
+        // Set the cookie expiration time (in seconds)
+        $cookie_expiry = time() + 60; // 86400 seconds = 1 day
+
+        // Set the cookie using the setcookie() function
+        setcookie($cookie_name, $cookie_value, $cookie_expiry, "/");
         // session_write_close();
         header("Location: ./index.php?page=home");
         exit();

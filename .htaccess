@@ -1,10 +1,13 @@
-  <Files "*">
-     Order deny,allow
-     Deny from all
-     Allow from env=ok_ref
-  </Files>
-  <Files "index.php">
-    Order allow,deny
-    Allow from all
-  </Files>
-  Options +Indexes
+RewriteEngine On
+RewriteBase /
+
+# Block direct access to files in the pages directory, except for CSS files
+RewriteCond %{REQUEST_URI} ^/(pages|model|img|dashboard|xampp|webalizer)/.*$
+RewriteCond %{REQUEST_URI} !/pages/styles\.css$
+RewriteCond %{REQUEST_URI} !/pages/home_css\.css$
+RewriteRule ^(.*)$ - [F]
+<Files "*.ico">
+  Order Allow,Deny
+  Deny from all
+  Satisfy All
+</Files>

@@ -14,11 +14,11 @@
         else if ($page == 'register')
             include "./pages/register.php";
         else if ($page == 'login_process')
-            include "./pages/login_process.php";
+            include "./model/login_process.php";
         else if ($page == 'register_process')
-            include "./pages/register_process.php";
+            include "./model/register_process.php";
         else if ($page == 'get_jobs')
-            include "./pages/get_jobs.php";
+            include "./model/get_jobs.php";
         
         else if ($_SESSION['login'] == 0){
             if ($page == 'home')
@@ -26,11 +26,11 @@
             else if ($page == 'find_jobs')
                 include "./pages/find_jobs0.php";
             else if ($page == 'submit_cv')
-                include "./pages/submit_cv.php";
+                include "./model/submit_cv.php";
             else if ($page == 'get_info')
-                include "./pages/get_info.php";
+                include "./model/get_info.php";
             else if ($page == 'get_profile_cv')
-                include "./pages/get_profile_cv.php";
+                include "./model/get_profile_cv.php";
             else if ($page == 'create_cv')
                 include './pages/create_cv.php';
             else if ($page == 'profile')
@@ -52,11 +52,11 @@
             else if ($page == 'create_job')
                 include "./pages/create_job.php";
             else if ($page == 'submit_job')
-                include "./pages/submit_job.php";
+                include "./model/submit_job.php";
             else if ($page == 'get_profile_job')
-                include "./pages/get_profile_job.php";
+                include "./model/get_profile_job.php";
             else if ($page == 'get_info')
-                include "./pages/get_info.php";
+                include "./model/get_info.php";
             else if ($page == 'profile')
                 include "./pages/company.php";
             else if ($page == 'job')

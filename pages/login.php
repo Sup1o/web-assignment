@@ -42,6 +42,7 @@
     <div class = "logo">CV MANAGEMENT</div>
 </header>
 <body>
+
     <div class="formContainer">
         <div class="formWrapper" id="choose">
             <span class="logo">CV MANAGEMENT</span>
@@ -66,7 +67,7 @@
             <span class="logo">CV MANAGEMENT</span>
             
             <form action="./index.php?page=login_process" method="POST">
-                <input type="email" placeholder="Email" id = "username" name = "email">
+                <input type="email" placeholder="Email" id = "username" name = "email" value="">
                 <div id="error1">error message</div>
                 <input type="password" placeholder="Password" id = "password" name = "password">
                 <div id="error2">error message</div>
