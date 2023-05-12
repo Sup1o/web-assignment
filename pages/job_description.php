@@ -238,7 +238,7 @@
 <body style="background: #4FC3F7;">
     <div class="container rounded bg-white mt-5 mb-5 surround">
         <div class="row my-row">
-            <h1 id="profile-type" style="margin-top: 5%;">EMPLOYEE</h1>
+            <h1 id="profile-type" style="margin-top: 5%;">JOB DESCRIPTION</h1>
             <div class="col-md-6 border-right">
                 <div class="p-3 py-5" >
                     <div class="d-flex justify-content-between align-items-center mb-3">
