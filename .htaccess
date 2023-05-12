@@ -1,0 +1,10 @@
+  <Files "*">
+     Order deny,allow
+     Deny from all
+     Allow from env=ok_ref
+  </Files>
+  <Files "index.php">
+    Order allow,deny
+    Allow from all
+  </Files>
+  Options +Indexes
